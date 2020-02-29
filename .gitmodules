@@ -1,0 +1,24 @@
+[submodule "pack/deoplete/start/deoplete.nvim"]
+	path = pack/deoplete/start/deoplete.nvim
+	url = https://github.com/Shougo/deoplete.nvim
+[submodule "pack/deoplete/start/neco-syntax"]
+	path = pack/deoplete/start/neco-syntax
+	url = https://github.com/Shougo/neco-syntax
+[submodule "pack/deoplete/start/LanguageClient-neovim"]
+	path = pack/deoplete/start/LanguageClient-neovim
+	url = https://github.com/autozimu/LanguageClient-neovim
+[submodule "pack/nvim/start/nvim-yarp"]
+	path = pack/nvim/start/nvim-yarp
+	url = https://github.com/roxma/nvim-yarp
+[submodule "pack/nvim/start/vim-hug-neovim-rpc"]
+	path = pack/nvim/start/vim-hug-neovim-rpc
+	url = https://github.com/roxma/vim-hug-neovim-rpc
+[submodule "pack/pablo/start/editorconfig-vim"]
+	path = pack/pablo/start/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim
+[submodule "pack/pablo/start/ale"]
+	path = pack/pablo/start/ale
+	url = https://github.com/dense-analysis/ale
+[submodule "pack/pablo/start/vimwiki"]
+	path = pack/pablo/start/vimwiki
+	url = https://github.com/vimwiki/vimwiki
