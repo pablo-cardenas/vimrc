@@ -22,3 +22,6 @@
 [submodule "pack/pablo/start/vimwiki"]
 	path = pack/pablo/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki
+[submodule "pack/pablo/start/vista.vim"]
+	path = pack/pablo/start/vista.vim
+	url = https://github.com/liuchengxu/vista.vim
