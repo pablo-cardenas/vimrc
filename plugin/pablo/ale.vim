@@ -8,7 +8,7 @@ let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'c': ['clang-format'],
 \   'cpp': ['clang-format'],
-\   'python': ['black'],
+\   'python': ['autopep8', 'yapf'],
 \}
 let g:ale_fix_on_save = 1
 
