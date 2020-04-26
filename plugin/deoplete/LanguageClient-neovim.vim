@@ -5,7 +5,9 @@ let g:LanguageClient_serverCommands = {
     \ 'cpp': ['clangd', '-clang-tidy'],
     \ 'c': ['clangd', '-clang-tidy'],
     \ 'python': ['pyls'],
+    \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
     \ }
+
 
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
