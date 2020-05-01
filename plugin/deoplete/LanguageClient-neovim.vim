@@ -2,10 +2,11 @@
 set hidden
 
 let g:LanguageClient_serverCommands = {
-    \ 'cpp': ['clangd', '-clang-tidy'],
     \ 'c': ['clangd', '-clang-tidy'],
+    \ 'cpp': ['clangd', '-clang-tidy'],
     \ 'python': ['pyls'],
     \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
+    \ 'tex': ['texlab'],
     \ }
 
 

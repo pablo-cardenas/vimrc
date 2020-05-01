@@ -1,16 +1,20 @@
 let g:ale_linters = {
 \   'c': ['clang'],
 \   'cpp': ['clang'],
-\   'python': ['pylint', 'flake8'],
 \   'markdown': ['proselint', 'writegood'],
+\   'plaintex': ['lacheck', 'chktex'],
+\   'python': ['pylint', 'flake8'],
 \   'r': ['lintr'],
+\   'tex': ['lacheck', 'chktex'],
 \   }
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'c': ['clang-format'],
 \   'cpp': ['clang-format'],
+\   'plaintex': ['latexindent'],
 \   'python': ['autopep8', 'yapf'],
 \   'r': ['styler'],
+\   'tex': ['latexindent'],
 \}
 let g:ale_fix_on_save = 1
 
