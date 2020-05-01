@@ -28,6 +28,9 @@ else
     set list
 endif
 
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
+
 " To avoid some keys
 nnoremap <Left>  :echo "Use h"<CR>
 nnoremap <Right> :echo "Use l"<CR>
