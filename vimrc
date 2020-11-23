@@ -21,6 +21,7 @@ if &t_Co > 2
     syntax on
     set colorcolumn=80
 
+    set background=light
     highlight ExtraWhitespace ctermbg=1
     match ExtraWhitespace /\s\+$/
 else
