@@ -37,3 +37,6 @@
 [submodule "pack/pablo/start/vimux"]
 	path = pack/pablo/start/vimux
 	url = https://github.com/benmills/vimux
+[submodule "pack/pablo/start/emmet-vim"]
+	path = pack/pablo/start/emmet-vim
+	url = https://github.com/mattn/emmet-vim
