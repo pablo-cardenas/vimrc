@@ -17,11 +17,15 @@ set undofile
 filetype indent plugin on
 set autoindent
 
+set path=**
+set wildignore+=*/node_modules/*
+set wildignore+=*/venv/*,*/*.egg-info/*,*.pyc,*/__pycache__/
+
 if &t_Co > 2
     syntax on
     set colorcolumn=80
+    set background=dark
 
-    set background=light
     highlight ExtraWhitespace ctermbg=1
     match ExtraWhitespace /\s\+$/
 else
@@ -49,6 +53,7 @@ inoremap <Up>    <C-o>:echo "No up for you!"<CR>
 inoremap <Down>  <C-o>:echo "No down for you!"<CR>
 inoremap <BS>    <C-o>:echo "Use C-h"<CR>
 cnoremap <BS>    <NOP>
+inoremap <C-@>   <NOP>
 
 cabbrev wq echo 'Use ZZ'
 cabbrev q! echo 'Use ZQ'

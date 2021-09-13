@@ -1,2 +1,8 @@
-let g:vimwiki_list = [{'path': '~/Documents/wiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [
+\  {
+\    'path': '~/Documents/wiki/',
+\    'syntax': 'default',
+\    'ext': '.md',
+\    'automatic_nested_syntaxes': 1,
+\  }
+\]
