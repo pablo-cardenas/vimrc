@@ -11,6 +11,7 @@ set wildmenu
 set nowrap
 set showmatch
 set number
+set mouse=
 
 set undofile
 

@@ -6,6 +6,7 @@ let g:LanguageClient_serverCommands = {
     \ 'cpp': ['clangd', '-clang-tidy'],
     \ 'python': ['pyls'],
     \ 'r': ['R', '--slave', '-e', 'languageserver::run()'],
+    \ 'rmd': ['R', '--slave', '-e', 'languageserver::run()'],
     \ 'tex': ['texlab'],
     \ }
 

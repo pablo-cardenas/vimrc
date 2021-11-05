@@ -1,3 +1,1 @@
 neovim
-git+https://github.com/PyCQA/pycodestyle.git@master
-python-language-server[all]
