@@ -14,6 +14,7 @@ set number
 set mouse=
 
 set undofile
+set undodir=~/.cache/vim/undo/
 
 filetype indent plugin on
 set autoindent
