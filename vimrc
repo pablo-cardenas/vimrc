@@ -13,6 +13,8 @@ set showmatch
 set number
 set mouse=
 
+set directory=~/.cache/vim/swap/
+
 set undofile
 set undodir=~/.cache/vim/undo/
 
