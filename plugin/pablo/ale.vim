@@ -15,7 +15,7 @@ let g:ale_fixers = {
 \   'c': ['clang-format'],
 \   'cpp': ['clang-format'],
 \   'css': ['stylelint'],
-\   'html': ['stylelint', 'tidy'],
+\   'html': ['stylelint'],
 \   'mail': [],
 \   'plaintex': ['latexindent'],
 \   'python': ['yapf'],
