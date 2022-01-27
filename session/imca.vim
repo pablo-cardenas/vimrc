@@ -3,7 +3,7 @@ Explore .
 
 $tabnew
 Explore templates
-tcd templates
+tcd .
 tabrewind
 
 $tabnew
