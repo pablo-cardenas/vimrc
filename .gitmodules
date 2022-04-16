@@ -1,9 +1,6 @@
 [submodule "pack/pablo/start/editorconfig-vim"]
 	path = pack/pablo/start/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim
-[submodule "pack/pablo/start/ale"]
-	path = pack/pablo/start/ale
-	url = https://github.com/dense-analysis/ale
 [submodule "pack/pablo/start/vimwiki"]
 	path = pack/pablo/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki

@@ -17,20 +17,20 @@ let g:user_emmet_settings = {
 \              ."</head>\n"
 \              ."<body>\n\t${child}|\n</body>\n"
 \              ."</html>",
-\      'table': "<table>\n"
-\              ."\t<thead>\n"
-\              ."\t\t<tr>\n"
-\              ."\t\t\t<th scope=\"col\"></th>\n"
-\              ."\t\t\t<th scope=\"col\"></th>\n"
-\              ."\t\t</tr>\n"
-\              ."\t</thead>\n"
-\              ."\t<tbody>\n"
-\              ."\t\t<tr>\n"
-\              ."\t\t\t<th scope=\"row\"></th>\n"
-\              ."\t\t\t<td></td>\n"
-\              ."\t\t</tr>\n"
-\              ."\t</tbody>\n"
-\              ."</table>\n",
+\      't': "<table>\n"
+\          ."\t<thead>\n"
+\          ."\t\t<tr>\n"
+\          ."\t\t\t<th scope=\"col\"></th>\n"
+\          ."\t\t\t<th scope=\"col\"></th>\n"
+\          ."\t\t</tr>\n"
+\          ."\t</thead>\n"
+\          ."\t<tbody>\n"
+\          ."\t\t<tr>\n"
+\          ."\t\t\t<th scope=\"row\"></th>\n"
+\          ."\t\t\t<td></td>\n"
+\          ."\t\t</tr>\n"
+\          ."\t</tbody>\n"
+\          ."</table>\n",
 \    },
 \  },
 \}
