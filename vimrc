@@ -10,7 +10,6 @@ set laststatus=1
 set wildmenu
 set nowrap
 set showmatch
-set number
 set mouse=
 
 set directory=~/.cache/vim/swap/
