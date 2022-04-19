@@ -1,17 +1,17 @@
-cd ~/Development/flask_imca
+cd ~/Development/imca
 Explore .
 
 $tabnew
-Explore tests
-tcd tests
+Explore flask_imca/tests
+tcd flask_imca/tests
 tabrewind
 
 $tabnew
-Explore src/flask_imca
-tcd src/flask_imca
+Explore flask_imca/src/flask_imca
+tcd flask_imca/src/flask_imca
 tabrewind
 
 $tabnew
-Explore src/flask_imca/webpack
-tcd src/flask_imca/webpack
+Explore webpack-imca
+tcd webpack-imca
 tabrewind
