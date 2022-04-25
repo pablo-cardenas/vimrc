@@ -37,7 +37,6 @@ else
 endif
 
 autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
 
 " To avoid some keys
 nnoremap <Left>  :echo "Use h"<CR>
@@ -57,6 +56,10 @@ inoremap <Down>  <C-o>:echo "No down for you!"<CR>
 inoremap <BS>    <C-o>:echo "Use C-h"<CR>
 cnoremap <BS>    <NOP>
 inoremap <C-@>   <NOP>
+nnoremap h $
+nnoremap l 0
+nnoremap j gg
+nnoremap k G
 
 cabbrev wq echo 'Use ZZ'
 cabbrev q! echo 'Use ZQ'
