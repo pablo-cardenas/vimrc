@@ -2,7 +2,6 @@ set nocompatible
 set history=1000
 
 set encoding=utf-8
-set backspace=eol,start
 set hidden
 
 set noshowmode
