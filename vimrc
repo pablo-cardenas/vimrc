@@ -8,7 +8,6 @@ set hidden
 set noshowmode
 set laststatus=1
 set wildmenu
-set nowrap
 set showmatch
 set mouse=
 
