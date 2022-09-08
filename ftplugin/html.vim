@@ -1,2 +1,1 @@
-set formatprg=tidy\ -q
-set colorcolumn=68
+set formatprg=prettier\ --stdin-filepath\ %
