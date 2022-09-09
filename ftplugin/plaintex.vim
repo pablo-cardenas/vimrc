@@ -1,1 +1,1 @@
-set formatprg=latexindent
+setlocal formatprg=latexindent

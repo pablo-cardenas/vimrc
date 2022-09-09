@@ -1,1 +1,1 @@
-set formatprg=bibclean
+setlocal formatprg=bibclean

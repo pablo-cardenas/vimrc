@@ -1,4 +1,4 @@
-set formatprg=prettier\ --stdin-filepath\ %
-set expandtab
-set softtabstop=2
-set shiftwidth=2
+setlocal formatprg=prettier\ --stdin-filepath\ %
+setlocal expandtab
+setlocal softtabstop=2
+setlocal shiftwidth=2

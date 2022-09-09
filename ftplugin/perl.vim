@@ -1,1 +1,1 @@
-set formatprg=perltidy
+setlocal formatprg=perltidy
