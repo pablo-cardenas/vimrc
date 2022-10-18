@@ -1,29 +1,16 @@
 set nocompatible
-set history=1000
-
-set encoding=utf-8
-set hidden
-
+set history=10000
 set noshowmode
-set laststatus=1
-set wildmenu
-set showmatch
-set mouse=
 
 set directory=~/.cache/vim/swap/
-
 set undofile
 set undodir=~/.cache/vim/undo/
 
-filetype indent plugin on
-set autoindent
+filetype plugin indent on
 
 set path=**
 set wildignore+=*/node_modules/*
 set wildignore+=*/venv/*,*/*.egg-info/*,*.pyc,*/__pycache__/
-
-set listchars+=trail:~
-set list
 
 autocmd BufWinLeave *.* mkview
 
