@@ -16,3 +16,6 @@
 [submodule "pack/pablo/start/vim-surround"]
 	path = pack/pablo/start/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "pack/pablo/start/vim-lsp"]
+	path = pack/pablo/start/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp
