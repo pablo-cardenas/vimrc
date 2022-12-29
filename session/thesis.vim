@@ -9,5 +9,21 @@ function! Synctex()
         redraw!
 endfunction
 
-map <C-j> :call Synctex()<cr>
+function! ViewRef()
+	let match_list = matchlist(getline('.'), "^% \\(\\a\\+\\d\\+\\) \\(\\d\\+\\)")
+	let ref = $BIB_DATA . "/" . match_list[1] . ".pdf"
+	let page = match_list[2]
+	execute "silent !zathura " . ref . " -P " . page . " >/dev/null 2>&1 &"
+	redraw!
+endfunction
+
+function! Action()
+	if match(getline('.'), "^\s*%") == -1
+		call Synctex()
+	else
+		call ViewRef()
+	endif
+endfunction
+
+map <C-j> :call Action()<cr>
 
