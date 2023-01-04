@@ -22,3 +22,6 @@
 [submodule "pack/pablo/start/vim-lsp-settings"]
 	path = pack/pablo/start/vim-lsp-settings
 	url = https://github.com/mattn/vim-lsp-settings
+[submodule "pack/pablo/start/ultisnips"]
+	path = pack/pablo/start/ultisnips
+	url = https://github.com/SirVer/ultisnips
