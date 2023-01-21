@@ -28,3 +28,6 @@
 [submodule "pack/pablo/start/vimtex"]
 	path = pack/pablo/start/vimtex
 	url = https://github.com/lervag/vimtex.git
+[submodule "pack/pablo/start/vim-snippets"]
+	path = pack/pablo/start/vim-snippets
+	url = https://github.com/honza/vim-snippets
