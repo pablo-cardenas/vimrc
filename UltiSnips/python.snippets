@@ -1,3 +1,26 @@
+snippet #! "#!/usr/bin/env python" b
+#!/usr/bin/env python
+$0
+endsnippet
+
+snippet ifmain "ifmain" b
+if __name__ == "__main__":
+	${1:${VISUAL:main()}}
+endsnippet
+
+snippet with "with" b
+with ${1:expr}`!p snip.rv = " as " if t[2] else ""`${2:var}:
+	${3:${VISUAL:pass}}
+$0
+endsnippet
+
+snippet for "for loop" b
+for ${1:item} in ${2:iterable}:
+	${3:${VISUAL:pass}}
+endsnippet
+
+# --------------------------------------------- #
+
 snippet seq "methods for emulating a sequence type" b
 def __getitem__(self, key):
 	${1:pass}
@@ -6,3 +29,155 @@ def __len__(self):
 	${2:pass}
 endsnippet
 
+
+snippet context "context manager methods" b
+def __enter__(self):
+	${1:pass}
+
+def __exit__(self, exc_type, exc_value, traceback):
+	${2:pass}
+endsnippet
+
+
+snippet desc "methods implementing descriptors" b
+def __get__(self, instance, owner):
+	${1:pass}
+
+def __set__(self, instance, value):
+	${2:pass}
+
+def __delete__(self, instance):
+	${3:pass}
+endsnippet
+
+
+snippet repr "method implementing string representation" b
+def __repr__(self):
+	${1:pass}
+endsnippet
+
+
+# --------------------------------------------- #
+
+global !p
+
+class Arg:
+	def __init__(self, arg):
+		self.arg = arg
+		name_and_type = arg.split('=')[0].split(':')
+		self.name = name_and_type[0].strip()
+		self.type = name_and_type[1].strip() if len(name_and_type) == 2 else None
+
+def get_args(arglist):
+	args = []
+	n = len(arglist)
+	i = 0
+	while i < n:
+		l_bracket = 0
+		start = i
+		while i < n and (l_bracket > 0 or arglist[i] != ','):
+			if arglist[i] == '[':
+				l_bracket += 1
+			elif arglist[i] == ']' and l_bracket > 0:
+				l_bracket -= 1
+			i += 1
+		arg = arglist[start:i]
+		if arg:
+			args.append(Arg(arg))
+		i += 1
+
+	args = [arg for arg in args if arg.name != 'self']
+
+	return args
+endglobal
+
+
+snippet def "function with docstrings" b
+def ${1:function}(`!p
+if snip.indent:
+	snip.rv = 'self' + (", " if len(t[2]) else "")`${2:arg1}) -> ${3:None}:
+	"""${4:TODO: Docstring for $1.}`!p
+snip.rv = ""
+snip >> 1
+
+args = get_args(t[2])
+for arg in args:
+	snip += ":param {}: TODO".format(arg)
+
+if t[3] != "None":
+	snip += ":returns: TODO"
+
+snip += '"""'
+`
+	${5:${VISUAL:pass}}
+endsnippet
+
+
+snippet defc "class method with docstrings" b
+@classmethod
+def ${1:function}(`!p
+if snip.indent:
+	snip.rv = 'cls' + (", " if len(t[2]) else "")`${2:arg1}) -> ${3:None}:
+	"""${4:TODO: Docstring for $1.}`!p
+
+snip.rv = ""
+snip >> 1
+
+args = get_args(t[2])
+for arg in args:
+	snip += ":param {}: TODO".format(arg)
+
+if t[3] != "None":
+	snip += ":returns: TODO"
+`
+	"""
+	${5:${VISUAL:pass}}
+endsnippet
+
+
+snippet defs "static method with docstrings" b
+@staticmethod
+def ${1:function}(${2:arg1}) -> ${3:None}:
+	"""${4:TODO: Docstring for $1.}`!p
+snip.rv = ""
+snip >> 1
+
+args = get_args(t[2])
+for arg in args:
+	snip += ":param {}: TODO".format(arg)
+
+if t[3] != "None":
+	snip += ":returns: TODO"
+`
+	"""
+
+	${5:${VISUAL:pass}}
+endsnippet
+
+
+snippet class "class with docstrings" b
+class ${1:MyClass}`!p snip.rv = "(" if t[2] else ""`${2:Parent}`!p snip.rv = ")" if t[2] else ""`:
+	"""${3:Docstring for $1.}`!p
+snip.rv = ""
+snip >> 1
+args = get_args(t[4])
+for arg in args:
+	snip += ":param %s: TODO" % arg
+`
+	"""
+
+	def __init__(self$4) -> None:`!p
+snip >> 2
+snip.rv = ""
+if t[2]:
+	# If has parent class
+	snip += "super().__init__()"
+	snip.rv += '\n' + snip.mkline("")
+
+for arg in args:
+	# Initialize attributes
+	snip += "self._{} = {}".format(arg, arg)
+`
+
+		$5
+endsnippet
