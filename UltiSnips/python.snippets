@@ -208,6 +208,12 @@ class ${1:MyClass}:
 		return ${0:self.$3 * self.$5}
 endsnippet
 
+snippet namedtuple "namedtuple" b
+${1:MyNamedTuple} = namedtuple("$1", (${2:"attr1", "attr2"}))
+$0
+
+endsnippet
+
 # --------------------------------------------- #
 
 snippet np "import numpy as np" b
@@ -241,6 +247,12 @@ with torch.no_grad():
 	${0:${VISUAL:pass}}
 endsnippet
 
+snippet step "zero_grad, backward, step" b
+optimizer.zero_grad()
+loss.backward()
+optimizer.step()
+endsnippet
+
 # --------------------------------------------- #
 
 snippet if "If" b
@@ -263,3 +275,4 @@ elif ${3:condition}:
 else:
 	${5:pass}
 endsnippet
+
