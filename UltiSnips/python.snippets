@@ -235,12 +235,11 @@ import torch.nn.functional as F
 $0
 endsnippet
 
-snippet gym "import gymnasium as gym" b
-import gymnasium as gym
-$0
-endsnippet
-
 # --------------------------------------------- #
+
+snippet torch.device "device = torch.device('cuda' if not torch.cuda.is_available() else 'cpu')" b
+device = torch.device("cuda" if not torch.cuda.is_available() else "cpu")
+endsnippet
 
 snippet no_grad "with torch.no_grad()" b
 with torch.no_grad():
@@ -251,6 +250,33 @@ snippet step "zero_grad, backward, step" b
 optimizer.zero_grad()
 loss.backward()
 optimizer.step()
+endsnippet
+
+snippet gym "gym loop" b
+from itertools import count
+
+import gymnasium as gym
+
+
+env = gym.make("${1:LunarLander-v2}"`!p
+snip.rv = ', render_mode="' if t[2] else ""
+`${2:human}`!p
+snip.rv = '"' if [2] else ""
+`)
+
+for i_episode in count():
+	observation, info = env.reset(`!p snip.rv = "seed=" if t[3] else ""`${3:42})
+	for t in count():
+		# Select an action
+		$0action = env.action_space.sample()
+
+		# Perform action in the enviroment
+		observation, reward, terminated, truncated, info = env.step(action)
+
+		if terminated or truncated:
+			break
+
+env.close()
 endsnippet
 
 # --------------------------------------------- #
