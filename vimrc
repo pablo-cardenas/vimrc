@@ -1,7 +1,7 @@
 set nocompatible
 set history=10000
 set noshowmode
-set backspace=start
+set backspace=start,eol
 set incsearch
 
 set directory=~/.cache/vim/swap/
