@@ -1,0 +1,79 @@
+global !p
+def math():
+	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+def comment(): 
+	return vim.eval('vimtex#syntax#in_comment()') == '1'
+def env(name):
+	x, y = vim.eval("vimtex#env#is_inside('" + name + "')") 
+	return x != '0' and y != '0'
+endglobal
+
+context "math()"
+snippet ;f "\phi" iA
+\phi
+endsnippet
+
+context "math()"
+snippet ;vf "\varphi" iA
+\varphi
+endsnippet
+
+context "math()"
+snippet ;p "\psi" iA
+\psi
+endsnippet
+
+context "math()"
+snippet ;P "\Psi" iA
+\Psi
+endsnippet
+
+context "math()"
+snippet ;F "\Phi" iA
+\Phi
+endsnippet
+
+context "math()"
+snippet ;g "\gamma" iA
+\gamma
+endsnippet
+
+context "math()"
+snippet ;G "\Gamma" iA
+\Gamma
+endsnippet
+
+context "math()"
+snippet ;s "\sigma" iA
+\sigma
+endsnippet
+
+context "math()"
+snippet ;l "\lambda" iA
+\lambda
+endsnippet
+
+context "math()"
+snippet ;L "\Lambda" iA
+\Lambda
+endsnippet
+
+context "math()"
+snippet ;m "\mu" iA
+\mu
+endsnippet
+
+context "math()"
+snippet ;a "\alpha" iA
+\alpha
+endsnippet
+
+context "math()"
+snippet ;ve "\alpha" iA
+\varepsilon
+endsnippet
+
+context "math()"
+snippet ;vf "\varphi" iA
+\varepsilon
+endsnippet
