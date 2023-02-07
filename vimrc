@@ -48,3 +48,4 @@ nnoremap <C-W><C-W> <NOP>
 cabbrev wq echo 'Use ZZ'
 cabbrev q! echo 'Use ZQ'
 cabbrev q echo 'Use ZQ'
+cabbrev w echo 'Use up'
