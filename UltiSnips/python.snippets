@@ -20,10 +20,12 @@ for ${1:item} in ${2:iterable}:
 endsnippet
 
 # --------------------------------------------- #
+
 snippet sized "Sized" b
 def __len__(self):
 	${2:pass}
 endsnippet
+
 
 snippet sequence "Sequence" b
 def __getitem__(self, index):
@@ -43,7 +45,7 @@ def __exit__(self, exc_type, exc_value, traceback):
 endsnippet
 
 
-snippet desc "Descriptor" b
+snippet descriptor "Descriptor" b
 def __get__(self, instance, owner):
 	${1:pass}
 
@@ -59,7 +61,6 @@ snippet repr "__repr__" b
 def __repr__(self):
 	${1:pass}
 endsnippet
-
 
 # --------------------------------------------- #
 
@@ -237,7 +238,7 @@ endsnippet
 
 # --------------------------------------------- #
 
-snippet torch.device "device = torch.device('cuda' if not torch.cuda.is_available() else 'cpu')" b
+snippet device "device = torch.device('cuda' if not torch.cuda.is_available() else 'cpu')" b
 device = torch.device("cuda" if not torch.cuda.is_available() else "cpu")
 endsnippet
 
@@ -246,10 +247,14 @@ with torch.no_grad():
 	${0:${VISUAL:pass}}
 endsnippet
 
-snippet step "zero_grad, backward, step" b
+snippet loss "zero_grad, backward, step" b
+loss = criterion(${3:input}, ${4:target})
 optimizer.zero_grad()
 loss.backward()
+# nn.utils.clip_grad_norm_(${1:model}.parameters(), max_norm=${2:1})
+# nn.utils.clip_grad_value_($1.parameters(), clip_value=$2)
 optimizer.step()
+$0
 endsnippet
 
 snippet gym "gym loop" b
@@ -258,23 +263,31 @@ from itertools import count
 import gymnasium as gym
 
 
-env = gym.make("${1:LunarLander-v2}"`!p
+env = gym.make("${1:CartPole-v1}"`!p
 snip.rv = ', render_mode="' if t[2] else ""
 `${2:human}`!p
-snip.rv = '"' if [2] else ""
+snip.rv = '"' if t[2] else ""
 `)
 
-for i_episode in count():
+for episode in count():
 	observation, info = env.reset(`!p snip.rv = "seed=" if t[3] else ""`${3:42})
+
 	for t in count():
 		# Select an action
-		$0action = env.action_space.sample()
+		action = env.action_space.sample()
 
 		# Perform action in the enviroment
-		observation, reward, terminated, truncated, info = env.step(action)
+		next_observation, reward, terminated, truncated, info = env.step(
+			action
+		)
+
+		$0
 
 		if terminated or truncated:
 			break
+		observation = next_observation
+
+	print(f"{episode=}, {t+1=}")
 
 env.close()
 endsnippet
