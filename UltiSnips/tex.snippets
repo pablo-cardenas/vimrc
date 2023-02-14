@@ -231,52 +231,55 @@ snippet lr< "leftangle rightangle" iA
 endsnippet
 # --------------------------------------------- #
 
-
-snippet lim "limit" w
-\lim_{${4:$3} \to ${5:\infty}}{${1:${2:f}(${3:n})}}
+context "math()"
+snippet lim "limit" wA
+\lim_{${1:${2:n} \to ${3:\infty}}}{${4:${5:f}(${6:n})}}
 endsnippet
 
 context "math()"
-snippet uuu "bigcup" iA
-\bigcup_{${4:$3 = ${5:1}}}`!p snip.rv="^{" if t[6] else ""`${6:\infty}`!p snip.rv="}" if t[6] else ""`{${1:${2:A}_{${3:n}}}}$0
+snippet uuu "bigcup" wA
+\bigcup_{${1:${2:n} = ${3:1}}}`!p snip.rv="^{" if t[6] else ""`${6:\infty}`!p snip.rv="}" if t[6] else ""`{${4:${5:A}_$2}}$0
 endsnippet
 
 context "math()"
-snippet nnn "bigcap" iA
-\bigcap_{${4:$3 = ${5:1}}}`!p snip.rv="^{" if t[6] else ""`${6:\infty}`!p snip.rv="}" if t[6] else ""`{${1:${2:A}_{${3:n}}}}$0
+snippet nnn "bigcap" wA
+\bigcap_{${1:${2:n} = ${3:1}}}`!p snip.rv="^{" if t[6] else ""`${6:\infty}`!p snip.rv="}" if t[6] else ""`{${4:${5:A}_$2}}$0
 endsnippet
 
 context "math()"
-snippet uu+ "biguplus" iA
-\biguplus_{${4:$3 = ${5:1}}}`!p snip.rv="^{" if t[6] else ""`${6:\infty}`!p snip.rv="}" if t[6] else ""`{${1:${2:A}_{${3:n}}}}$0
+snippet uu+ "biguplus" wA
+\biguplus_{${1:${2:n} = ${3:1}}}`!p snip.rv="^{" if t[6] else ""`${6:\infty}`!p snip.rv="}" if t[6] else ""`{${4:${5:A}_$2}}$0
 endsnippet
 
 context "math()"
-snippet sum "sum" w
-\sum_{${4:$3 = ${5:1}}}`!p snip.rv="^{" if t[6] else ""`${6:\infty}`!p snip.rv="}" if t[6] else ""`{${1:${2:x}_{${3:n}}}}$0
+snippet sum "sum" wA
+\sum_{${1:${2:n} = ${3:1}}}`!p snip.rv="^{" if t[6] else ""`${6:\infty}`!p snip.rv="}" if t[6] else ""`{${4:${5:A}_$2}}$0
 endsnippet
-
 
 context "math()"
-snippet seq "Sequence" iA
-\\{${1:x}_${2:n}\\}_\{$2 ${3:\in \\N}}`!p snip.rv="^{" if t[4] else ""`${4:\infty}`!p snip.rv="}" if t[4] else ""`$0
+snippet seq "Sequence" wA
+\\{${4:${5:x}_$2}\\}_{${1:${2:n} = ${3:1}}}`!p snip.rv="^{" if t[6] else ""`${6:\infty}`!p snip.rv="}" if t[6] else ""`${7/(.+)/(?1: \\\\subset)/} ${7:\R}$0
 endsnippet
 
-snippet prod "product" w
-\prod_{${4:$3 = ${5:1}}}`!p snip.rv="^{" if t[6] else ""`${6:\infty}`!p snip.rv="}" if t[6] else ""`{${1:${2:x}_{${3:n}}}}$0
+context "math()"
+snippet prod "product" wA
+\sum_{${1:${2:n} = ${3:1}}}`!p snip.rv="^{" if t[6] else ""`${6:\infty}`!p snip.rv="}" if t[6] else ""`{${4:${5:A}_$2}}$0
 endsnippet
 
 # --------------------------------------------- #
 
 
+context "math()"
 snippet ubb "The \underbrace command" iA
 \underbrace{${1:${VISUAL:}}}_{$2} $0
 endsnippet
 
+context "math()"
 snippet obb "The \overbrace command" iA
 \overbrace{${1:${VISUAL:}}}^{$2} $0
 endsnippet
 
+context "math()"
 snippet part "d/dx" w
 \frac{\partial ${1:V}}{\partial ${2:x}} $0
 endsnippet
