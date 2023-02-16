@@ -198,15 +198,13 @@ endsnippet
 
 
 snippet dcl "dataclass" b
-@dataclass
-class ${1:MyClass}:
-	"""${2:Docstring for $1.}
+@dataclass`!p snip.rv = "(" if t[1] or t[2] else ""`${1/(.+)/(?1:frozen=)/}${1:True}`!p snip.rv = ', ' if t[1] and t[2] else ""`${2/(.+)/(?1:order=)/}${2:True}`!p snip.rv = ")" if t[1] or t[2] else ""`
+class ${3:MyClass}:
+	"""${4:Docstring for $3.}
 	"""
-	${3:var_1}: ${4:int}
-	${5:var_2}: ${6:float} = ${7:0}
-
-	def ${8:total}(self): -> $6:
-		return ${0:self.$3 * self.$5}
+	var_1: int
+	var_2: float
+	var_3: str
 endsnippet
 
 snippet namedtuple "namedtuple" b
