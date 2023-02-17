@@ -1,5 +1,6 @@
 let g:vimtex_indent_enabled   = 0
 let g:vimtex_imaps_enabled    = 0
+"let g:vimtex_mappings_enabled    = 0
 "let g:vimtex_complete_enabled = 0
 "let g:vimtex_syntax_enabled   = 0
 
@@ -15,3 +16,10 @@ let g:vimtex_delim_toggle_mod_list = [
 \ ['\biggl', '\biggr'],
 \ ['\Biggl', '\Biggr'],
 \]
+
+let g:vimtex_env_toggle_math_map = {
+\ '$': '$$',
+\ '$$': '$',
+\ '\(': '\[',
+\ '\[': '\(',
+\}
