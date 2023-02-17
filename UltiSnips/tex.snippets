@@ -27,7 +27,6 @@ $0
 \\end{$1}
 endsnippet
 
-priority 100
 snippet ... "dots" iA
 \dots
 endsnippet
@@ -79,29 +78,35 @@ snippet => "implies" Ai
 endsnippet
 
 snippet =< "implied by" Ai
-\impliedby
+\impliedby $0
 endsnippet
 
 context "math()"
 snippet iff "iff" Ai
-\iff
+\iff $0
+endsnippet
+
+context "math()"
+snippet thr4 "\therefore" wiA
+\therefore $0
 endsnippet
 
 context "not math()"
 snippet mk "Math" wA
-$${1}$ $0
+\($1\)$0
 endsnippet
 
 snippet dm "Math" wA
 \[
 	${1:${VISUAL}}
-.\] $0
+.\]
+$0
 endsnippet
 
 
 snippet ali "Align" bA
 \begin{align*}
-  $0
+	$0
 .\end{align*}
 endsnippet
 
@@ -120,7 +125,6 @@ snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "symbol frac" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
-priority 1000
 context "math()"
 snippet '^.*\)/' "() frac" wrA
 `!p
@@ -136,52 +140,14 @@ snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
 `{$1}$0
 endsnippet
 
-context "math()"
-snippet '([A-Za-z]|\\math[^{]*{[A-Za-z]})(\d)' "auto subscript" wrA
-`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
-endsnippet
+
 
 context "math()"
-snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
-`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+snippet && "align" iA
+&${1:${VISUAL}} \\\\
 endsnippet
 
-
-snippet sympy "sympyblock " w
-sympy $1 sympy$0
-endsnippet
-
-priority 10000
-snippet 'sympy(.*)sympy' "sympy" wr
-`!p
-from sympy import *
-x, y, z, t = symbols('x y z t')
-k, m, n = symbols('k m n', integer=True)
-f, g, h = symbols('f g h', cls=Function)
-init_printing()
-snip.rv = eval('latex(' + match.group(1).replace('\\', '').replace('^', '**').replace('{', '(').replace('}', ')') + ')')
-`
-endsnippet
-
-priority 1000
-snippet math "mathematicablock" w
-math $1 math$0
-endsnippet
-
-priority 10000
-snippet 'math(.*)math' "math" wr
-`!p
-import subprocess
-code = match.group(1)
-code = 'ToString[' + code + ', TeXForm]'
-snip.rv = subprocess.check_output(['wolframscript', '-code', code])
-`
-endsnippet
-
-snippet && "equals" iA
-&$1 \\\\
-endsnippet
-
+context "math()"
 snippet != "not equals" iA
 \neq 
 endsnippet
@@ -206,81 +172,107 @@ endsnippet
 
 # --------------------------------------------- #
 context "math()"
-snippet lr( "left( right)" i
-\left(${1:${VISUAL}}\right) $0
+snippet () "left( right)" iA
+(${1:${VISUAL}})$0
 endsnippet
 
 context "math()"
-snippet lr| "left| right|" i
-\left|${1:${VISUAL}}\right| $0
+snippet [] "left[ right]" iA
+[${1:${VISUAL}}]$0
 endsnippet
 
 context "math()"
-snippet lr{ "left\{ right\}" i
-\left\\{${1:${VISUAL}}\right\\} $0
+snippet {} "left\{ right\}" iA
+\\{${1:${VISUAL}}\\}$0
 endsnippet
 
 context "math()"
-snippet lr[ "left[ right]" i
-\left[${1:${VISUAL}}\right] $0
+snippet vv "left| right|" iA
+\lvert ${1:${VISUAL}} \rvert $0
 endsnippet
 
 context "math()"
-snippet lr< "leftangle rightangle" iA
-\left<${1:${VISUAL}}\right>$0
-endsnippet
-# --------------------------------------------- #
-
-context "math()"
-snippet lim "limit" wA
-\lim_{${1:${2:n} \to ${3:\infty}}}{${4:${5:f}(${6:n})}}
-endsnippet
-
-context "math()"
-snippet uuu "bigcup" wA
-\bigcup${1/(.+)/(?1:_{)/}${1:n = 1}${1/(.+)/(?1:})/}${2/(.+)/(?1:^{)/}${2:\infty}${2/(.+)/(?1:})/}{$3}$0
-endsnippet
-
-context "math()"
-snippet nnn "bigcap" wA
-\bigcap${1/(.+)/(?1:_{)/}${1:n = 1}${1/(.+)/(?1:})/}${2/(.+)/(?1:^{)/}${2:\infty}${2/(.+)/(?1:})/}{$3}$0
-endsnippet
-
-context "math()"
-snippet uu+ "biguplus" wA
-\biguplus${1/(.+)/(?1:_{)/}${1:n = 1}${1/(.+)/(?1:})/}${2/(.+)/(?1:^{)/}${2:\infty}${2/(.+)/(?1:})/}{$3}$0
-endsnippet
-
-context "math()"
-snippet sum "sum" wA
-\sum${1/(.+)/(?1:_{)/}${1:n = 1}${1/(.+)/(?1:})/}${2/(.+)/(?1:^{)/}${2:\infty}${2/(.+)/(?1:})/}{$3}$0
-endsnippet
-
-context "math()"
-snippet seq "Sequence" wA
-\\{${1:x_n}\\}${2/(.+)/(?1:_{)/}${2:n = 1}${2/(.+)/(?1:})/}${3/(.+)/(?1:^{)/}${3:\infty}${3/(.+)/(?1:})/}${4/(.+)/(?1: \\\\subset)/}${4:\R}$0
-endsnippet
-
-context "math()"
-snippet prod "product" wA
-\sum_{${1:${2:n} = ${3:1}}}`!p snip.rv="^{" if t[6] else ""`${6:\infty}`!p snip.rv="}" if t[6] else ""`{${4:${5:A}_$2}}$0
+snippet VV "left| right|" iA
+\lVert ${1:${VISUAL}} \rVert $0
 endsnippet
 
 # --------------------------------------------- #
 
+context "math()"
+snippet lim "limit" w
+\lim_{${1:${2:n} \to ${3:\infty}}}{${4:${VISUAL}}}
+endsnippet
 
 context "math()"
-snippet ubb "The \underbrace command" iA
+snippet uuu "bigcup" w
+\bigcup${1/(.+)/(?1:_{)/}${1:n = 1}${1/(.+)/(?1:})/}${2/(.+)/(?1:^{)/}${2:\infty}${2/(.+)/(?1:})/}{${3:${VISUAL}}}$0
+endsnippet
+
+context "math()"
+snippet nnn "bigcap" w
+\bigcap${1/(.+)/(?1:_{)/}${1:n = 1}${1/(.+)/(?1:})/}${2/(.+)/(?1:^{)/}${2:\infty}${2/(.+)/(?1:})/}{${3:${VISUAL}}}$0
+endsnippet
+
+context "math()"
+snippet uu+ "biguplus" w
+\biguplus${1/(.+)/(?1:_{)/}${1:n = 1}${1/(.+)/(?1:})/}${2/(.+)/(?1:^{)/}${2:\infty}${2/(.+)/(?1:})/}{${3:${VISUAL}}}$0
+endsnippet
+
+context "math()"
+snippet sum "sum" w
+\sum${1/(.+)/(?1:_{)/}${1:n = 1}${1/(.+)/(?1:})/}${2/(.+)/(?1:^{)/}${2:\infty}${2/(.+)/(?1:})/}{${3:${VISUAL}}}$0
+endsnippet
+
+context "math()"
+snippet prod "product" w
+\prod${1/(.+)/(?1:_{)/}${1:n = 1}${1/(.+)/(?1:})/}${2/(.+)/(?1:^{)/}${2:\infty}${2/(.+)/(?1:})/}{${3:${VISUAL}}}$0
+endsnippet
+
+context "math()"
+snippet int "real integral" w
+\int${1/(.+)/(?1:_{)/}${1:-\infty}${1/(.+)/(?1:})/}${2/(.+)/(?1:^{)/}${2:+\infty}${2/(.+)/(?1:})/}{${3:${VISUAL}}}\:d${4:x}$0
+endsnippet
+
+context "math()"
+snippet mint "measure integral " w
+\int${1/(.+)/(?1:_{)/}${1:X}${1/(.+)/(?1:})/}{${2:${VISUAL:f}}}\,\mathrm{d}${3:\mu}$0
+endsnippet
+
+context "math()"
+snippet mintu "measure upper integral" w
+\overline{\int${1/(.+)/(?1:_{)/}${1:X}${1/(.+)/(?1:})/}}{${3:${VISUAL:f}}}\,\mathrm{d}${4:\mu}$0
+endsnippet
+
+context "math()"
+snippet mintl "measure lower integral" w
+\underline{\int${1/(.+)/(?1:_{)/}${1:X}${1/(.+)/(?1:})/}}{${3:${VISUAL:f}}}\,\mathrm{d}${4:\mu}$0
+endsnippet
+
+context "math()"
+snippet seq "Sequence" w
+\\{${1:x_n}\\}${2/(.+)/(?1:_{)/}${2:n = 1}${2/(.+)/(?1:})/}${3/(.+)/(?1:^{)/}${3:\infty}${3/(.+)/(?1:})/}${4/(.+)/(?1: \\\\subset )/}${4:\R}$0
+endsnippet
+
+# --------------------------------------------- #
+
+
+context "math()"
+snippet ubb "The \underbrace command" w
 \underbrace{${1:${VISUAL:}}}_{$2} $0
 endsnippet
 
 context "math()"
-snippet obb "The \overbrace command" iA
+snippet obb "The \overbrace command" w
 \overbrace{${1:${VISUAL:}}}^{$2} $0
 endsnippet
 
 context "math()"
-snippet part "d/dx" w
+snippet op "\operatorname" w
+\operatorname{$1}$0
+endsnippet
+
+context "math()"
+snippet part "d/dx" wA
 \frac{\partial ${1:V}}{\partial ${2:x}} $0
 endsnippet
 
@@ -299,7 +291,7 @@ _{$1}$0
 endsnippet
 
 snippet ooo "\infty" iA
-\infty $0
+\infty$0
 endsnippet
 
 snippet <= "leq" iA
@@ -313,6 +305,11 @@ endsnippet
 context "math()"
 snippet EE "geq" iA
 \exists 
+endsnippet
+
+context "math()"
+snippet ~~ "sim" iA
+\sim 
 endsnippet
 
 context "math()"
@@ -372,10 +369,6 @@ snippet norm "norm" iA
 \|$1\|$0
 endsnippet
 
-context "math()"
-snippet dint "integral" wA
-\int_{${1:-\infty}}^{${2:\infty}} ${3:${VISUAL}} \:d${4:x} $0
-endsnippet
 
 context "math()"
 snippet -> "to" iA
@@ -403,23 +396,8 @@ snippet !> "mapsto" iA
 endsnippet
 
 context "math()"
-snippet invs "inverse" iA
-^{-1}
-endsnippet
-
-context "math()"
-snippet compl "complement" iA
-^{c}
-endsnippet
-
-context "math()"
 snippet \\\ "setminus" iA
 \setminus $0
-endsnippet
-
-context "math()"
-snippet set "set" wA
-\\{$1\\} $0
 endsnippet
 
 context "math()"
@@ -429,17 +407,17 @@ endsnippet
 
 context "math()"
 snippet cc "subset" Ai
-\subset 
+\subset $0
 endsnippet
 
 context "math()"
 snippet notin "not in " iA
-\not\in 
+\not\in $0
 endsnippet
 
 context "math()"
 snippet inn "in " iA
-\in 
+\in $0
 endsnippet
 
 context "math()"
@@ -449,17 +427,17 @@ endsnippet
 
 context "math()"
 snippet Nn "cap" iA
-\cap 
+\cap $0
 endsnippet
 
 context "math()"
 snippet UU "cup" iA
-\cup 
+\cup $0
 endsnippet
 
 context "math()"
 snippet U+ "uplus" iA
-\uplus 
+\uplus $0
 endsnippet
 
 context "math()"
@@ -503,9 +481,14 @@ endsnippet
 
 # --------------------------------------------- #
 
-context 'math()'
-snippet fun "Description"  b
-${1:f} : ${2:\R} \to ${3:\R} $0 
+context "math()"
+snippet fun "f: A -> B" w
+${1:f}\colon ${2:U} \to ${3:\R}
+endsnippet
+
+context "not math()"
+snippet fun "f: A -> B" w
+$${1:f}\colon ${2:U} \to ${3:\R}$
 endsnippet
 
 # --------------------------------------------- #
@@ -540,30 +523,10 @@ endsnippet
 
 snippet def "begin{definition}" b
 \begin{definition}[${1}]
-	${0:${VISUAL}}
-	\\emph{$1}
+	$2 \emph{${3:`!p snip.rv = t[1].lower() `}} $0
 \end{definition}
 endsnippet
 
-context "not math()"
-snippet alg "algebra"
-álgebra $0
-endsnippet
-
-context "not math()"
-snippet salg "σ-álgebra"
-$\sigma$-álgebra $0
-endsnippet
-
-context "not math()"
-snippet psis "π-sistema"
-$\pi$-sistema $0
-endsnippet
-
-context "not math()"
-snippet lsis "λ-sistema"
-$\lambda$-sistema $0
-endsnippet
 
 context "math()"
 snippet "([A-Z])cal" "\mathcal" rA
@@ -571,20 +534,51 @@ snippet "([A-Z])cal" "\mathcal" rA
 endsnippet
 
 context "math()"
-snippet "([A-Ea-e])([ijknm])" "fast subscript" rA
-`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
-endsnippet
-
-context "math()"
 snippet ## "#" iA
 \#(${1:${VISUAL}})$0
 endsnippet
 
+
+
+# --------------------------------------------- #
+
 context "math()"
-snippet fun "f: A -> B" w
-${1:f} \colon ${2:U} \to ${3:\R}
+snippet inv "inverse" iA
+^{-1}
 endsnippet
 
+context "math()"
+snippet compl "complement" iA
+^{c}
+endsnippet
+
+context "math()"
+snippet '\\Rb' "\bar{\R}" wrA
+\overline{\R}
+endsnippet
+
+# --------------------------------------------- #
+
+priority -100
+context "math()"
+snippet '([A-Za-z]|\\math[^{]*{[A-Za-z]})(\d)' "auto subscript" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+endsnippet
+
+context "math()"
+snippet "([^\\\w][A-Za-ex-z])([ijknm])" "fast subscript" rA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
+
+context "math()"
+snippet "([^\\\w][A-Za-ex-z])_([ijknm][+-])" "fast subscript" rA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1}$0
+endsnippet
 
 # --------------------------------------------- #
 
@@ -617,6 +611,35 @@ endsnippet
 
 context "not math()"
 snippet plt "Por lo tanto," A
-Por lo tanto, 
+Por lo tanto, $0
 endsnippet
 
+context "not math()"
+snippet alg "algebra"
+álgebra$0
+endsnippet
+
+context "not math()"
+snippet salg "σ-álgebra"
+$\sigma$-álgebra$0
+endsnippet
+
+context "not math()"
+snippet psis "π-sistema"
+$\pi$-sistema$0
+endsnippet
+
+context "not math()"
+snippet lsis "λ-sistema"
+$\lambda$-sistema$0
+endsnippet
+
+context "not math()"
+snippet mctp "μ-ctp" w
+$\mu$-ctp$0
+endsnippet
+
+context "not math()"
+snippet contra "(=><=)"
+($\Rightarrow\!\Leftarrow$)
+endsnippet
