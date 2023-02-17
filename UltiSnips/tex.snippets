@@ -521,9 +521,10 @@ endsnippet
 
 # --------------------------------------------- #
 
+priority 1
 snippet def "begin{definition}" b
 \begin{definition}[${1}]
-	$2 \emph{${3:`!p snip.rv = t[1].lower() `}} $0
+	$2 `!p snip.rv = " ".join(f'\\emph{{{s.strip().lower()}}}' for s in t[1].split(','))` $0
 \end{definition}
 endsnippet
 
