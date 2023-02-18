@@ -1,9 +1,14 @@
 let g:vimtex_indent_enabled = 0
 let g:vimtex_imaps_enabled = 0
 let g:vimtex_matchparen_enabled = 0
-"let g:vimtex_mappings_enabled = 0
-"let g:vimtex_complete_enabled = 0
-"let g:vimtex_syntax_enabled = 0
+let g:vimtex_mappings_enabled = 0
+let g:vimtex_complete_enabled = 0
+let g:vimtex_syntax_enabled = 0
+let g:vimtex_matchparen_enabled = 0
+let g:vimtex_format_enabled = 0
+let g:vimtex_indent_bib_enabled = 0
+let g:vimtex_indent_bib_enabled = 0
+let g:vimtex_complete_enabled = 0
 
 let g:tex_flavor='latex'
 let g:vimtex_view_method='zathura'
