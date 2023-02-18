@@ -7,8 +7,4 @@ highlight! link Conceal texCmd
 highlight ExtraWhitespace ctermbg=1
 match ExtraWhitespace /\(\(\\(\)\@<=\s\+\|\s\+\(\\)\)\@=\|\(\S.*\)\@<=\s\s\+\([^ &\\]\)\@=\)/
 
-set foldmethod=expr
-set foldexpr=vimtex#fold#level(v:lnum)
-set foldtext=vimtex#fold#text()
-
 compiler tex
