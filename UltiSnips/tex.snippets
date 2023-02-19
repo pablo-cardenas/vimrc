@@ -12,8 +12,8 @@ endglobal
 snippet template "Basic template" b
 \documentclass[a4paper]{article}
 
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage{amsmath, amssymb}
 
 \begin{document}
@@ -200,7 +200,17 @@ endsnippet
 
 context "math()"
 snippet lim "limit" w
-\lim_{${1:${2:n} \to ${3:\infty}}}{${4:${VISUAL}}}
+\lim_{${1:n \to \infty}}{${2:${VISUAL}}}
+endsnippet
+
+context "math()"
+snippet limsup "superior limit" w
+\limsup_{${1:n \to \infty}}{${2:${VISUAL}}}
+endsnippet
+
+context "math()"
+snippet liminf "inferior limit" w
+\liminf_{${1:n \to \infty}}{${2:${VISUAL}}}
 endsnippet
 
 context "math()"
@@ -234,17 +244,17 @@ snippet int "real integral" w
 endsnippet
 
 context "math()"
-snippet mint "measure integral " w
+snippet mint "measure integral" w
 \int${1/(.+)/(?1:_{)/}${1:X}${1/(.+)/(?1:})/}{${2:${VISUAL:f}}}\,\mathrm{d}${3:\mu}$0
 endsnippet
 
 context "math()"
-snippet mintu "measure upper integral" w
+snippet mintu "upper measure integral" w
 \overline{\int${1/(.+)/(?1:_{)/}${1:X}${1/(.+)/(?1:})/}}{${3:${VISUAL:f}}}\,\mathrm{d}${4:\mu}$0
 endsnippet
 
 context "math()"
-snippet mintl "measure lower integral" w
+snippet mintl "lower measure integral" w
 \underline{\int${1/(.+)/(?1:_{)/}${1:X}${1/(.+)/(?1:})/}}{${3:${VISUAL:f}}}\,\mathrm{d}${4:\mu}$0
 endsnippet
 
@@ -253,8 +263,12 @@ snippet seq "Sequence" w
 \\{${1:x_n}\\}${2/(.+)/(?1:_{)/}${2:n = 1}${2/(.+)/(?1:})/}${3/(.+)/(?1:^{)/}${3:\infty}${3/(.+)/(?1:})/}${4/(.+)/(?1: \\\\subset )/}${4:\R}$0
 endsnippet
 
-# --------------------------------------------- #
+context "not math()"
+snippet seq "Sequence" w
+\\(\\{${1:x_n}\\}${2/(.+)/(?1:_{)/}${2:n = 1}${2/(.+)/(?1:})/}${3/(.+)/(?1:^{)/}${3:\infty}${3/(.+)/(?1:})/}${4/(.+)/(?1: \\\\subset )/}${4:\R}\\)$0
+endsnippet
 
+# --------------------------------------------- #
 
 context "math()"
 snippet ubb "The \underbrace command" w
@@ -341,15 +355,6 @@ $0
 endsnippet
 
 context "math()"
-snippet mcal "mathcal" iA
-\mathcal{$1}$0
-endsnippet
-
-snippet lll "l" iA
-\ell
-endsnippet
-
-context "math()"
 snippet nabl "nabla" iA
 \nabla 
 endsnippet
@@ -363,12 +368,6 @@ context "math()"
 snippet ** "cdot" iA
 \cdot 
 endsnippet
-
-context "math()"
-snippet norm "norm" iA
-\|$1\|$0
-endsnippet
-
 
 context "math()"
 snippet -> "to" iA
@@ -416,12 +415,12 @@ snippet notin "not in " iA
 endsnippet
 
 context "math()"
-snippet inn "in " iA
+snippet inn "in" iA
 \in $0
 endsnippet
 
 context "math()"
-snippet Nn "cap" iA
+snippet NN "cap" iA
 \cap $0
 endsnippet
 
@@ -440,25 +439,19 @@ snippet OO "emptyset" iA
 \emptyset
 endsnippet
 
+# --------------------------------------------- #
+
 context "math()"
-snippet NN "n" iA
-\mathbb{N}
+snippet "([A-Z])cal" "\mathcal" rA
+\mathcal{`!p snip.rv = match.group(1)`}$0
 endsnippet
 
 context "math()"
-snippet RR "real" iA
-\mathbb{R}
+snippet "([A-Z])bb" "\mathbb" rA
+\mathbb{`!p snip.rv = match.group(1)`}$0
 endsnippet
 
-context "math()"
-snippet QQ "Q" iA
-\mathbb{Q}
-endsnippet
-
-context "math()"
-snippet ZZ "Z" iA
-\mathbb{Z}
-endsnippet
+# --------------------------------------------- #
 
 context "math()"
 snippet tt "text" iA
@@ -530,16 +523,9 @@ endsnippet
 
 
 context "math()"
-snippet "([A-Z])cal" "\mathcal" rA
-\mathcal{`!p snip.rv = match.group(1)`}$0
-endsnippet
-
-context "math()"
 snippet ## "#" iA
 \#(${1:${VISUAL}})$0
 endsnippet
-
-
 
 # --------------------------------------------- #
 
