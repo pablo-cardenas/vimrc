@@ -37,5 +37,6 @@ let g:vimtex_env_toggle_math_map = {
 \ '$': '$$',
 \ '$$': '$',
 \ '\(': '\[',
-\ '\[': '\(',
+\ '\[': 'equation',
+\ 'equation': '\(',
 \}
