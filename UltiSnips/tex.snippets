@@ -260,12 +260,12 @@ endsnippet
 
 context "math()"
 snippet seq "Sequence" w
-\\{${1:x_n}\\}${2/(.+)/(?1:_{)/}${2:n = 1}${2/(.+)/(?1:})/}${3/(.+)/(?1:^{)/}${3:\infty}${3/(.+)/(?1:})/}${4/(.+)/(?1: \\\\subset )/}${4:\R}$0
+\\{${1:x_n}\\}${2/(.+)/(?1:_{)/}${2:n = 1}${2/(.+)/(?1:})/}${3/(.+)/(?1:^{)/}${3:\infty}${3/(.+)/(?1:})/}${4/(.+)/(?1: \\\\subset )/}${4:\mathbb{R}}$0
 endsnippet
 
 context "not math()"
 snippet seq "Sequence" w
-\\(\\{${1:x_n}\\}${2/(.+)/(?1:_{)/}${2:n = 1}${2/(.+)/(?1:})/}${3/(.+)/(?1:^{)/}${3:\infty}${3/(.+)/(?1:})/}${4/(.+)/(?1: \\\\subset )/}${4:\R}\\)$0
+\\(\\{${1:x_n}\\}${2/(.+)/(?1:_{)/}${2:n = 1}${2/(.+)/(?1:})/}${3/(.+)/(?1:^{)/}${3:\infty}${3/(.+)/(?1:})/}${4/(.+)/(?1: \\\\subset )/}${4:\mathbb{R}}\\)$0
 endsnippet
 
 # --------------------------------------------- #
@@ -300,18 +300,22 @@ snippet ^^ "to the ... power" iA
 ^{$1}$0
 endsnippet
 
+context "math()"
 snippet __ "subscript" iA
 _{$1}$0
 endsnippet
 
+context "math()"
 snippet ooo "\infty" iA
 \infty$0
 endsnippet
 
+context "math()"
 snippet <= "leq" iA
 \le $0
 endsnippet
 
+context "math()"
 snippet >= "geq" iA
 \ge $0
 endsnippet
@@ -442,13 +446,13 @@ endsnippet
 # --------------------------------------------- #
 
 context "math()"
-snippet "([A-Z])cal" "\mathcal" rA
-\mathcal{`!p snip.rv = match.group(1)`}$0
+snippet "([A-Z])(cal|bb|frak|scr)" "\mathcal" rA
+\math`!p snip.rv = match.group(2)`{`!p snip.rv = match.group(1)`}$0
 endsnippet
 
 context "math()"
-snippet "([A-Z])bb" "\mathbb" rA
-\mathbb{`!p snip.rv = match.group(1)`}$0
+snippet "([a-zA-Z])(bf)" "\mathcal" rA
+\math`!p snip.rv = match.group(2)`{`!p snip.rv = match.group(1)`}$0
 endsnippet
 
 # --------------------------------------------- #
@@ -476,12 +480,12 @@ endsnippet
 
 context "math()"
 snippet fun "f: A -> B" w
-${1:f}\colon ${2:U} \to ${3:\R}
+${1:f}\colon ${2:U} \to ${3:\mathbb{R}}
 endsnippet
 
 context "not math()"
 snippet fun "f: A -> B" w
-$${1:f}\colon ${2:U} \to ${3:\R}$
+$${1:f}\colon ${2:U} \to ${3:\mathbb{R}}$
 endsnippet
 
 # --------------------------------------------- #
