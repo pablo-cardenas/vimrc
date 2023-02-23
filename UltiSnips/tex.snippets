@@ -1,3 +1,5 @@
+priority 1
+
 global !p
 def math():
 	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
@@ -71,24 +73,6 @@ endsnippet
 
 snippet pac "Package" b
 \usepackage${1/(.+)/(?1:[)/}${1:option}${1/(.+)/(?1:])/}{${2:package}}$0
-endsnippet
-
-snippet => "implies" Ai
-\implies $0
-endsnippet
-
-snippet =< "implied by" Ai
-\impliedby $0
-endsnippet
-
-context "math()"
-snippet iff "iff" Ai
-\iff $0
-endsnippet
-
-context "math()"
-snippet thr4 "\therefore" wiA
-\therefore $0
 endsnippet
 
 context "not math()"
@@ -550,7 +534,6 @@ endsnippet
 
 # --------------------------------------------- #
 
-priority -100
 context "math()"
 snippet '([A-Za-z]|\\math[^{]*{[A-Za-z]})(\d)' "auto subscript" wrA
 `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
@@ -631,6 +614,49 @@ $\mu$-ctp$0
 endsnippet
 
 context "not math()"
-snippet contra "(=><=)"
+snippet => "(=>)" iA
+($\Rightarrow$)
+endsnippet
+
+context "not math()"
+snippet =< "(=<)" iA
+($\Leftarrow$)
+endsnippet
+
+context "not math()"
+snippet =>< "(=><=)" iA
 ($\Rightarrow\!\Leftarrow$)
 endsnippet
+
+context "math()"
+snippet => "\Rightarrow" Ai
+\Rightarrow $0
+endsnippet
+
+context "math()"
+snippet =< "\Leftarrow" Ai
+\Leftarrow $0
+endsnippet
+
+context "math()"
+snippet iff "iff" Ai
+\iff $0
+endsnippet
+
+context "math()"
+snippet thr4 "\therefore" wiA
+\therefore $0
+endsnippet
+
+priority 2
+context "math()"
+snippet ==> "implies" Ai
+\implies $0
+endsnippet
+
+context "math()"
+snippet ==< "implied by" Ai
+\impliedby $0
+endsnippet
+
+priority 1
