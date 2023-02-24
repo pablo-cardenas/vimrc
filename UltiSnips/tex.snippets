@@ -3,10 +3,10 @@ priority 1
 global !p
 def math():
 	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
-def comment(): 
+def comment():
 	return vim.eval('vimtex#syntax#in_comment()') == '1'
 def env(name):
-	x, y = vim.eval("vimtex#env#is_inside('" + name + "')") 
+	x, y = vim.eval("vimtex#env#is_inside('" + name + "')")
 	return x != '0' and y != '0'
 endglobal
 
@@ -129,11 +129,12 @@ endsnippet
 context "math()"
 snippet && "align" iA
 &${1:${VISUAL}} \\\\
+$0
 endsnippet
 
 context "math()"
 snippet != "not equals" iA
-\neq 
+\neq $0
 endsnippet
 
 context "math()"
@@ -306,17 +307,17 @@ endsnippet
 
 context "math()"
 snippet EE "geq" iA
-\exists 
+\exists $0
 endsnippet
 
 context "math()"
 snippet ~~ "sim" iA
-\sim 
+\sim $0
 endsnippet
 
 context "math()"
 snippet AA "forall" iA
-\forall 
+\forall $0
 endsnippet
 
 
@@ -344,22 +345,22 @@ endsnippet
 
 context "math()"
 snippet nabl "nabla" iA
-\nabla 
+\nabla $0
 endsnippet
 
 context "math()"
 snippet xx "cross" iA
-\times 
+\times $0
 endsnippet
 
 context "math()"
 snippet ** "cdot" iA
-\cdot 
+\cdot $0
 endsnippet
 
 context "math()"
 snippet -> "to" iA
-\to 
+\to $0
 endsnippet
 
 context "math()"
@@ -379,7 +380,7 @@ endsnippet
 
 context "math()"
 snippet !> "mapsto" iA
-\mapsto 
+\mapsto $0
 endsnippet
 
 context "math()"
@@ -423,9 +424,21 @@ snippet U+ "uplus" iA
 endsnippet
 
 context "math()"
+snippet O+ "\oplus" iA
+\oplus $0
+endsnippet
+
+context "math()"
+snippet Ox "\otimes" iA
+\otimes $0
+endsnippet
+
+context "math()"
 snippet OO "emptyset" iA
 \emptyset
 endsnippet
+
+
 
 # --------------------------------------------- #
 
@@ -624,7 +637,7 @@ snippet =< "(=<)" iA
 endsnippet
 
 context "not math()"
-snippet =>< "(=><=)" iA
+snippet >< "(=><=)" iA
 ($\Rightarrow\!\Leftarrow$)
 endsnippet
 
@@ -643,12 +656,12 @@ snippet iff "iff" Ai
 \iff $0
 endsnippet
 
+priority 2
 context "math()"
 snippet thr4 "\therefore" wiA
 \therefore $0
 endsnippet
 
-priority 2
 context "math()"
 snippet ==> "implies" Ai
 \implies $0
