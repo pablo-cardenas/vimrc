@@ -185,42 +185,42 @@ endsnippet
 
 context "math()"
 snippet lim "limit" w
-\lim_{${1:n \to \infty}}{${2:${VISUAL}}}
+\lim_{${1:n \to \infty}}$0
 endsnippet
 
 context "math()"
 snippet limsup "superior limit" w
-\limsup_{${1:n \to \infty}}{${2:${VISUAL}}}
+\limsup_{${1:n \to \infty}}$0
 endsnippet
 
 context "math()"
 snippet liminf "inferior limit" w
-\liminf_{${1:n \to \infty}}{${2:${VISUAL}}}
+\liminf_{${1:n \to \infty}}$0
 endsnippet
 
 context "math()"
 snippet uuu "bigcup" w
-\bigcup${1/(.+)/(?1:_{)/}${1:n = 1}${1/(.+)/(?1:})/}${2/(.+)/(?1:^{)/}${2:\infty}${2/(.+)/(?1:})/}{${3:${VISUAL}}}$0
+\bigcup${1/(.+)/(?1:_{)/}${1:n \in \mathbb{N}}${1/(.+)/(?1:})/}$0
 endsnippet
 
 context "math()"
 snippet nnn "bigcap" w
-\bigcap${1/(.+)/(?1:_{)/}${1:n = 1}${1/(.+)/(?1:})/}${2/(.+)/(?1:^{)/}${2:\infty}${2/(.+)/(?1:})/}{${3:${VISUAL}}}$0
+\bigcap${1/(.+)/(?1:_{)/}${1:n \in \mathbb{N}}${1/(.+)/(?1:})/}$0
 endsnippet
 
 context "math()"
 snippet uu+ "biguplus" w
-\biguplus${1/(.+)/(?1:_{)/}${1:n = 1}${1/(.+)/(?1:})/}${2/(.+)/(?1:^{)/}${2:\infty}${2/(.+)/(?1:})/}{${3:${VISUAL}}}$0
+\biguplus${1/(.+)/(?1:_{)/}${1:n \in \mathbb{N}}${1/(.+)/(?1:})/}$0
 endsnippet
 
 context "math()"
 snippet sum "sum" w
-\sum${1/(.+)/(?1:_{)/}${1:n = 1}${1/(.+)/(?1:})/}${2/(.+)/(?1:^{)/}${2:\infty}${2/(.+)/(?1:})/}{${3:${VISUAL}}}$0
+\sum${1/(.+)/(?1:_{)/}${1:n \in \mathbb{N}}${1/(.+)/(?1:})/}$0
 endsnippet
 
 context "math()"
 snippet prod "product" w
-\prod${1/(.+)/(?1:_{)/}${1:n = 1}${1/(.+)/(?1:})/}${2/(.+)/(?1:^{)/}${2:\infty}${2/(.+)/(?1:})/}{${3:${VISUAL}}}$0
+\prod${1/(.+)/(?1:_{)/}${1:n \in \mathbb{N}}${1/(.+)/(?1:})/}$0
 endsnippet
 
 context "math()"
@@ -466,10 +466,10 @@ snippet case "cases" wA
 \end{cases}
 endsnippet
 
-snippet bigfun "Big function" iA
+snippet bigfun "Big function"
 \begin{align*}
-	$1: $2 &\longrightarrow $3 \\\\
-	$4 &\longmapsto $1($4) = $0
+	$1: ${2:X} &\longrightarrow ${3:R} \\\\
+	$4 &\longmapsto $1($4) \coloneqq $0
 .\end{align*}
 endsnippet
 
@@ -626,6 +626,7 @@ snippet mctp "μ-ctp" w
 $\mu$-ctp$0
 endsnippet
 
+
 context "not math()"
 snippet => "(=>)" iA
 ($\Rightarrow$)
@@ -654,6 +655,11 @@ endsnippet
 context "math()"
 snippet iff "iff" Ai
 \iff $0
+endsnippet
+
+context "math()"
+snippet := "≔" iA
+\coloneqq $0
 endsnippet
 
 priority 2
