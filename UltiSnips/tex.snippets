@@ -12,11 +12,27 @@ endglobal
 
 
 snippet template "Basic template" b
-\documentclass[a4paper]{article}
+\documentclass{article}
 
-\usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage{amsmath, amssymb}
+\usepackage[T1]{fontenc}
+\usepackage{amssymb, mathtools, mathrsfs}
+\usepackage[paperwidth=11cm,paperheight=13cm,left=5mm,right=5mm,top=5mm,bottom=5mm]{geometry}
+
+\usepackage{amsthm}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{affirmation}{Affirmation}
+\newtheorem{exercise}{Exercise}
+\newtheorem{problem}{Problem}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{example}{Example}
+\newtheorem{corolary}{Corolary}
+\newtheorem{observation}{Observation}
+\newtheorem{remark}{Remark}
 
 \begin{document}
 $0
