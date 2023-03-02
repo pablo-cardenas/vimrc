@@ -1,0 +1,50 @@
+priority 1
+
+global !p
+def math():
+	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+def comment():
+	return vim.eval('vimtex#syntax#in_comment()') == '1'
+def env(name):
+	x, y = vim.eval("vimtex#env#is_inside('" + name + "')")
+	return x != '0' and y != '0'
+endglobal
+
+
+context "not math()"
+snippet amsthm "amsthm" b
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corolary}{Corolary}
+\newtheorem{affirmation}{Affirmation}
+\newtheorem{exercise}{Exercise}
+\newtheorem{problem}{Problem}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem{example}{Example}
+\newtheorem{observation}{Observation}
+\newtheorem{remark}{Remark}
+endsnippet
+
+context "not math()"
+snippet newthm "\newtheorem" b
+\newtheorem{${1:theorem}}{${2:`!p snip.rv = t[1].title()`}}
+endsnippet
+
+context "not math()"
+snippet thmsty "\theoremstyle" b
+\theoremstyle{$1`!p snip.rv = complete(t[1], ['plain', 'definition', 'remark'])`}$0
+endsnippet
+
+# --------------------------------------------- #
+
+context "not math()"
+snippet def "begin{definition}" b
+\begin{definition}[${1}]
+	$2 `!p snip.rv = " ".join(f'\\emph{{{s.strip().lower()}}}' for s in t[1].split(','))` $3
+\end{definition}
+$0
+endsnippet

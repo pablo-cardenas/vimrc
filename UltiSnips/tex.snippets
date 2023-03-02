@@ -19,20 +19,7 @@ snippet template "Basic template" b
 \usepackage{amssymb, mathtools, mathrsfs}
 \usepackage[paperwidth=11cm,paperheight=13cm,left=5mm,right=5mm,top=5mm,bottom=5mm]{geometry}
 
-\usepackage{amsthm}
-\newtheorem{proposition}{Proposition}
-\newtheorem{theorem}{Theorem}
-\newtheorem{lemma}{Lemma}
-\newtheorem{affirmation}{Affirmation}
-\newtheorem{exercise}{Exercise}
-\newtheorem{problem}{Problem}
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}
-\theoremstyle{remark}
-\newtheorem{example}{Example}
-\newtheorem{corolary}{Corolary}
-\newtheorem{observation}{Observation}
-\newtheorem{remark}{Remark}
+$1
 
 \begin{document}
 $0
@@ -484,7 +471,7 @@ endsnippet
 
 snippet bigfun "Big function"
 \begin{align*}
-	$1: ${2:X} &\longrightarrow ${3:R} \\\\
+	$1: ${2:X} &\longrightarrow ${3:\mathbb{R}} \\\\
 	$4 &\longmapsto $1($4) \coloneqq $0
 .\end{align*}
 endsnippet
@@ -493,24 +480,13 @@ endsnippet
 
 context "math()"
 snippet fun "f: A -> B" w
-${1:f}\colon ${2:U} \to ${3:\mathbb{R}}
+${1:f}\colon ${2:X} \to ${3:\mathbb{R}}
 endsnippet
 
 context "not math()"
 snippet fun "f: A -> B" w
-$${1:f}\colon ${2:U} \to ${3:\mathbb{R}}$
+$${1:f}\colon ${2:X} \to ${3:\mathbb{R}}$
 endsnippet
-
-# --------------------------------------------- #
-
-snippet newt "\newtheorem" b
-\newtheorem{${1:theorem}}{${2:`!p snip.rv = t[1].title()`}}
-endsnippet
-
-snippet thmsty "\theoremstyle" b
-\theoremstyle{$1`!p snip.rv = complete(t[1], ['plain', 'definition', 'remark'])`}$0
-endsnippet
-
 
 # --------------------------------------------- #
 
@@ -530,14 +506,6 @@ $0
 endsnippet
 
 # --------------------------------------------- #
-
-priority 1
-snippet def "begin{definition}" b
-\begin{definition}[${1}]
-	$2 `!p snip.rv = " ".join(f'\\emph{{{s.strip().lower()}}}' for s in t[1].split(','))` $0
-\end{definition}
-endsnippet
-
 
 context "math()"
 snippet ## "#" iA
