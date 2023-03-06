@@ -12,18 +12,36 @@ endglobal
 
 
 snippet template "Basic template" b
-\documentclass{article}
+\documentclass[a4paper]{article}
 
-\usepackage{lmodern}
 \usepackage[T1]{fontenc}
-\usepackage{amssymb, mathtools, mathrsfs}
-\usepackage[paperwidth=11cm,paperheight=13cm,left=5mm,right=5mm,top=5mm,bottom=5mm]{geometry}
+\usepackage{mathtools,amssymb}
 
 $1
-
 \begin{document}
 $0
 \end{document}
+endsnippet
+
+snippet savetrees "Save Trees!" b
+
+\usepackage[paperwidth=7.5cm, paperheight=19.8cm, margin=2.5mm]{geometry}
+\usepackage[extreme]{savetrees}
+\AtBeginDocument{
+	\setlength{\jot}{0pt}
+	\setlength{\abovedisplayskip}{0pt}
+	\setlength{\belowdisplayskip}{0pt}
+	\setlength{\abovedisplayshortskip}{0pt}
+	\setlength{\belowdisplayshortskip}{0pt}
+	\scriptsize
+}
+
+%\usepackage{multicol}
+%\setlength{\columnseprule}{0.4pt}
+%\setlength{\columnsep}{6pt}
+%\geometry{a4paper, landscape, margin=6mm}
+%\AtBeginDocument{\begin{multicols}{4}}\AtEndDocument{\end{multicols}}
+
 endsnippet
 
 snippet beg "begin{} / end{}" bA
@@ -487,7 +505,7 @@ endsnippet
 
 context "not math()"
 snippet fun "f: A -> B" w
-$${1:f}\colon ${2:X} \to ${3:\mathbb{R}}$
+\(${1:f}\colon ${2:X} \to ${3:\mathbb{R}}\)
 endsnippet
 
 # --------------------------------------------- #
@@ -594,38 +612,38 @@ endsnippet
 
 context "not math()"
 snippet salg "σ-álgebra"
-$\sigma$-álgebra$0
+\(\sigma\)-álgebra$0
 endsnippet
 
 context "not math()"
 snippet psis "π-sistema"
-$\pi$-sistema$0
+\(\pi\)-sistema$0
 endsnippet
 
 context "not math()"
 snippet lsis "λ-sistema"
-$\lambda$-sistema$0
+\(\lambda\)-sistema$0
 endsnippet
 
 context "not math()"
 snippet mctp "μ-ctp" w
-$\mu$-ctp$0
+\(\mu\)-ctp$0
 endsnippet
 
 
 context "not math()"
 snippet => "(=>)" iA
-($\Rightarrow$)
+(\(\Rightarrow\))
 endsnippet
 
 context "not math()"
 snippet =< "(=<)" iA
-($\Leftarrow$)
+(\(\Leftarrow\))
 endsnippet
 
 context "not math()"
 snippet >< "(=><=)" iA
-($\Rightarrow\!\Leftarrow$)
+(\(\Rightarrow\!\Leftarrow\))
 endsnippet
 
 context "math()"
