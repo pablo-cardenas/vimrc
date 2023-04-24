@@ -410,3 +410,9 @@ end = time.perf_counter()
 print(f"It took: {end - start:.2f}s")
 $0
 endsnippet
+
+
+snippet iterrows "pandas iterrows bucle" b
+for i_$1, row_$1 in df_${1}.iterrows():
+	${2:${VISUAL:pass}}
+endsnippet
