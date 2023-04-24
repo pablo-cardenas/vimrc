@@ -17,6 +17,7 @@ endsnippet
 snippet for "for loop" b
 for ${1:item} in ${2:iterable}:
 	${3:${VISUAL:pass}}
+$0
 endsnippet
 
 # --------------------------------------------- #
@@ -354,7 +355,6 @@ while running:
 	dt = clock.tick(60) / 1000
 
 pygame.quit()
-
 endsnippet
 
 
@@ -374,4 +374,39 @@ ${2:project_description}
 """
 
 __version__ = "${3:0.1}"
+endsnippet
+
+snippet ppe "ProcessPoolExecutor" b
+with concurrent.futures.ProcessPoolExecutor(max_workers=${1:4}) as executor:
+	${0:emap or cfac}
+endsnippet
+
+snippet tpe "ThreadPoolExecutor" b
+with concurrent.futures.ThreadPoolExecutor(max_workers=${1:4}) as executor:
+	${0:emap or cfac}
+endsnippet
+
+
+snippet emap "executor.map" b
+for result in executor.map(${1:func}, ${2:iterable}):
+	${3:pass}
+endsnippet
+
+snippet cfac "executor.map" b
+futures = (executor.submit(${1:func}, ${2:args}) for $2 in ${3:iterable})
+
+for future in concurrent.futures.as_completed(futures):
+	result = future.result()
+	$0
+endsnippet
+
+
+snippet perf_counter "time.perf_counter()" b
+start = time.perf_counter()
+
+${1:${VISUAL:pass}}
+
+end = time.perf_counter()
+print(f"It took: {end - start:.2f}s")
+$0
 endsnippet
