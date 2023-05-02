@@ -388,11 +388,12 @@ endsnippet
 
 
 snippet emap "executor.map" b
-for result in executor.map(${1:func}, ${2:iterable}):
-	${3:pass}
+${1:results} = executor.map(${2:func}, ${3:iterable})
+$0
 endsnippet
 
-snippet cfac "executor.map" b
+
+snippet cfac "concurrent.futures.as_completed" b
 futures = (executor.submit(${1:func}, ${2:args}) for $2 in ${3:iterable})
 
 for future in concurrent.futures.as_completed(futures):
@@ -402,17 +403,46 @@ endsnippet
 
 
 snippet perf_counter "time.perf_counter()" b
-start = time.perf_counter()
+start_time = time.perf_counter()
+print("Start: ${1:name}"}
 
 ${1:${VISUAL:pass}}
 
-end = time.perf_counter()
-print(f"It took: {end - start:.2f}s")
+end_time = time.perf_counter()
+print(f"End: $1 ({end_time - start_time:.2f}s)")
 $0
 endsnippet
 
 
 snippet iterrows "pandas iterrows bucle" b
-for i_$1, row_$1 in df_${1}.iterrows():
+for i_$1, row_$1 in $2.iterrows():
+	${3:${VISUAL:pass}}
+$0
+endsnippet
+
+
+snippet tempdir "tempfile.TemporaryDirectory()" b
+with tempfile.TemporaryDirectory() as ${1:tmpdirname}:
 	${2:${VISUAL:pass}}
+endsnippet
+
+
+snippet zipfile "zipfile.ZipFile" b
+with zipfile.ZipFile(${1:zip_path},"r") as zip_ref:
+	zip_ref.extract(member, target_dir)
+	zip_ref.extractall(target_dir)
+	$0
+endsnippet
+
+
+snippet pyside "pyside" b
+import sys
+from PySide6.QtWidgets import QApplication
+
+
+app = QApplication(sys.argv)
+
+${0:${VISUAL:# ...}}
+
+sys.exit(app.exec())
 endsnippet
