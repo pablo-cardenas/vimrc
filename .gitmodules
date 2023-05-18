@@ -31,3 +31,6 @@
 [submodule "pack/pablo/start/vim-snippets"]
 	path = pack/pablo/start/vim-snippets
 	url = https://github.com/honza/vim-snippets
+[submodule "pack/pablo/start/vimwiki"]
+	path = pack/pablo/start/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
