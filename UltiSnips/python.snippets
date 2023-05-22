@@ -404,9 +404,9 @@ endsnippet
 
 snippet perf_counter "time.perf_counter()" b
 start_time = time.perf_counter()
-print("Start: ${1:name}"}
+print("Start: ${1:name}")
 
-${1:${VISUAL:pass}}
+${2:${VISUAL:pass}}
 
 end_time = time.perf_counter()
 print(f"End: $1 ({end_time - start_time:.2f}s)")
@@ -483,4 +483,21 @@ loader = QUiLoader()
 window = loader.load(ui_file)
 ui_file.close()
 window.show()
+endsnippet
+
+
+snippet ET "xml.etree.ElementTree" b
+tree = ET.parse(${1:path})
+${2:root} = tree.getroot()
+endsnippet
+
+
+snippet win32clipboard "win32clipboard" b
+win32clipboard.OpenClipboard()
+clipboard = win32clipboard.GetClipboardData()
+win32clipboard.CloseClipboard()
+endsnippet
+
+snippet printf "print(f'{value=}')" b
+print(f"{${1:value}=}")
 endsnippet
