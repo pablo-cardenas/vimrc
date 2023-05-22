@@ -34,3 +34,6 @@
 [submodule "pack/pablo/start/vimwiki"]
 	path = pack/pablo/start/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
+[submodule "pack/pablo/start/calendar-vim"]
+	path = pack/pablo/start/calendar-vim
+	url = https://github.com/mattn/calendar-vim.git
