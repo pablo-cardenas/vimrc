@@ -6,3 +6,4 @@ let g:vimwiki_list =
     \ {'path': '~/dox/wiki/personal/', 'syntax': 'markdown', 'ext': '.md'},
 \ ]
 let g:vimwiki_folding = 'syntax'
+setlocal foldlevelstart=1
