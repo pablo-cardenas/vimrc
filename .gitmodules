@@ -37,3 +37,6 @@
 [submodule "pack/pablo/start/calendar-vim"]
 	path = pack/pablo/start/calendar-vim
 	url = https://github.com/mattn/calendar-vim.git
+[submodule "pack/pablo/start/vim-commentary"]
+	path = pack/pablo/start/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
