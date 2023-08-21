@@ -239,7 +239,7 @@ endsnippet
 
 # --------------------------------------------- #
 
-snippet device "device = torch.device('cuda' if not torch.cuda.is_available() else 'cpu')" b
+snippet device "device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')" b
 device = torch.device("cuda" if not torch.cuda.is_available() else "cpu")
 endsnippet
 
