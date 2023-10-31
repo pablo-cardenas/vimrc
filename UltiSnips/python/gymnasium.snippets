@@ -1,0 +1,34 @@
+snippet gym "gym loop" b
+from itertools import count
+
+import gymnasium as gym
+
+
+env = gym.make("${1:CartPole-v1}"`!p
+snip.rv = ', render_mode="' if t[2] else ""
+`${2:human}`!p
+snip.rv = '"' if t[2] else ""
+`)
+
+for episode in count():
+	observation, info = env.reset(`!p snip.rv = "seed=" if t[3] else ""`${3:42})
+
+	for t in count():
+		# Select an action
+		action = env.action_space.sample()
+
+		# Perform action in the enviroment
+		next_observation, reward, terminated, truncated, info = env.step(
+			action
+		)
+
+		$0
+
+		if terminated or truncated:
+			break
+		observation = next_observation
+
+	print(f"{episode=}, {t+1=}")
+
+env.close()
+endsnippet

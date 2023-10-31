@@ -65,6 +65,27 @@ snippet table "Table environment" b
 \end{table}
 endsnippet
 
+
+snippet svg "Figure SVG" b
+\begin{figure}[${1:htpb}]
+	\centering
+	\def\svgwidth{0.8\linewidth}
+	\import{${2:img/}}{${3:name}.pdf_tex}
+	\caption{${4:$3}}
+	\label{fig:${5:${3/\W+/-/g}}}
+\end{figure}
+
+endsnippet
+
+snippet xopp "Figure Xournalpp" b
+\begin{figure}[${1:htpb}]
+	\centering
+	\includegraphics[width=0.8\textwidth]{${2:img/name}_annotated.pdf}
+	\caption{${3:$2}}
+	\label{fig:${4:${2/\W+/-/g}}}
+\end{figure}
+endsnippet
+
 snippet fig "Figure environment" b
 \begin{figure}[${1:htpb}]
 	\centering
@@ -473,6 +494,11 @@ snippet "([a-zA-Z])(bf)" "\mathcal" rA
 \math`!p snip.rv = match.group(2)`{`!p snip.rv = match.group(1)`}$0
 endsnippet
 
+context "math()"
+snippet "([0-9a-z])(vec|hat)" "\vec hat" rA
+\\`!p snip.rv = match.group(2)`{`!p snip.rv = match.group(1)`}$0
+endsnippet
+
 # --------------------------------------------- #
 
 context "math()"
@@ -506,6 +532,11 @@ endsnippet
 context "not math()"
 snippet fun "f: A -> B" w
 \(${1:f}\colon ${2:X} \to ${3:\mathbb{R}}\)
+endsnippet
+
+context "not math()"
+snippet func "f: A -> B" w
+\(${1:f}\colon ${2:X} \stackrel{C^${4:0}}{\longrightarrow} ${3:\mathbb{R}}\)
 endsnippet
 
 # --------------------------------------------- #

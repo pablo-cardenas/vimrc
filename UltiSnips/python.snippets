@@ -3,16 +3,19 @@ snippet #! "#!/usr/bin/env python" b
 $0
 endsnippet
 
+
 snippet ifmain "ifmain" b
 if __name__ == "__main__":
 	${1:${VISUAL:main()}}
 endsnippet
+
 
 snippet with "with" b
 with ${1:expr}`!p snip.rv = " as " if t[2] else ""`${2:var}:
 	${3:${VISUAL:pass}}
 $0
 endsnippet
+
 
 snippet for "for loop" b
 for ${1:item} in ${2:iterable}:
@@ -208,97 +211,19 @@ class ${3:MyClass}:
 	var_3: str
 endsnippet
 
+
 snippet namedtuple "namedtuple" b
 ${1:MyNamedTuple} = namedtuple("$1", (${2:"attr1", "attr2"}))
 $0
 
 endsnippet
 
-# --------------------------------------------- #
-
-snippet np "import numpy as np" b
-import numpy as np
-from numpy.random import default_rng
-
-np.set_printoptions(linwidth=80, edgeitems=3)
-$0
-endsnippet
-
-snippet plt "import matplotlib.pyplot as plt" b
-import matplotlib.pyplot as plt
-$0
-endsnippet
-
-snippet torch "import torch" b
-import torch
-import torch.nn as nn
-import torch.optim as optim
-import torch.nn.functional as F
-$0
-endsnippet
-
-# --------------------------------------------- #
-
-snippet device "device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')" b
-device = torch.device("cuda" if not torch.cuda.is_available() else "cpu")
-endsnippet
-
-snippet no_grad "with torch.no_grad()" b
-with torch.no_grad():
-	${0:${VISUAL:pass}}
-endsnippet
-
-snippet loss "zero_grad, backward, step" b
-loss = criterion(${3:input}, ${4:target})
-optimizer.zero_grad()
-loss.backward()
-# nn.utils.clip_grad_norm_(${1:model}.parameters(), max_norm=${2:1})
-# nn.utils.clip_grad_value_($1.parameters(), clip_value=$2)
-optimizer.step()
-$0
-endsnippet
-
-snippet gym "gym loop" b
-from itertools import count
-
-import gymnasium as gym
-
-
-env = gym.make("${1:CartPole-v1}"`!p
-snip.rv = ', render_mode="' if t[2] else ""
-`${2:human}`!p
-snip.rv = '"' if t[2] else ""
-`)
-
-for episode in count():
-	observation, info = env.reset(`!p snip.rv = "seed=" if t[3] else ""`${3:42})
-
-	for t in count():
-		# Select an action
-		action = env.action_space.sample()
-
-		# Perform action in the enviroment
-		next_observation, reward, terminated, truncated, info = env.step(
-			action
-		)
-
-		$0
-
-		if terminated or truncated:
-			break
-		observation = next_observation
-
-	print(f"{episode=}, {t+1=}")
-
-env.close()
-endsnippet
-
-# --------------------------------------------- #
 
 snippet if "If" b
 if ${1:condition}:
 	${2:${VISUAL:pass}}
 endsnippet
+
 
 snippet ife "If / Else" b
 if ${1:condition}:
@@ -307,6 +232,7 @@ else:
 	${3:pass}
 endsnippet
 
+
 snippet ifee "If / Elif / Else" b
 if ${1:condition}:
 	${2:${VISUAL:pass}}
@@ -314,58 +240,6 @@ elif ${3:condition}:
 	${4:pass}
 else:
 	${5:pass}
-endsnippet
-
-snippet pygame "pygame template" b
-import pygame
-
-pygame.init()
-width, height = 640, 360
-screen = pygame.display.set_mode((width, height))
-
-pygame.font.init()
-font = pygame.font.Font(None, 20)
-
-clock = pygame.time.Clock()
-running = True
-dt = 0
-
-player_pos = pygame.Vector2(width / 2, height / 2)
-
-while running:
-	for event in pygame.event.get():
-		if event.type == pygame.QUIT:
-			running = False
-
-
-	keys = pygame.key.get_pressed()
-	if keys[pygame.K_k]:
-		player_pos.y -= 300 * dt
-	if keys[pygame.K_j]:
-		player_pos.y += 300 * dt
-	if keys[pygame.K_h]:
-		player_pos.x -= 300 * dt
-	if keys[pygame.K_l]:
-		player_pos.x += 300 * dt
-
-	screen.fill("purple")
-	pygame.draw.circle(screen, "red", player_pos, 40)
-	text = font.render("Hello world", True, "white")
-	screen.blit(text, player_pos)
-	pygame.display.flip()
-
-	dt = clock.tick(60) / 1000
-
-pygame.quit()
-endsnippet
-
-
-snippet clickio "Click command for input/output" b
-@click.command()
-@click.argument("input", type=click.File("r"), default="-")
-@click.argument("output", type=click.File("w"), default="-")
-def main(input, output):
-	${0:${VISUAL:pass}}
 endsnippet
 
 
@@ -378,10 +252,12 @@ ${2:project_description}
 __version__ = "${3:0.1}"
 endsnippet
 
+
 snippet ppe "ProcessPoolExecutor" b
 with concurrent.futures.ProcessPoolExecutor(max_workers=${1:4}) as executor:
 	${0:emap or cfac}
 endsnippet
+
 
 snippet tpe "ThreadPoolExecutor" b
 with concurrent.futures.ThreadPoolExecutor(max_workers=${1:4}) as executor:
@@ -416,13 +292,6 @@ $0
 endsnippet
 
 
-snippet iterrows "pandas iterrows bucle" b
-for i_$1, row_$1 in $2.iterrows():
-	${3:${VISUAL:pass}}
-$0
-endsnippet
-
-
 snippet tempdir "tempfile.TemporaryDirectory()" b
 with tempfile.TemporaryDirectory() as ${1:tmpdirname}:
 	${2:${VISUAL:pass}}
@@ -437,69 +306,27 @@ with zipfile.ZipFile(${1:zip_path},"r") as zip_ref:
 endsnippet
 
 
-snippet pyside "pyside" b
-import sys
-from PySide6.QtWidgets import QApplication
-
-
-app = QApplication(sys.argv)
-
-${0:${VISUAL:# ...}}
-
-sys.exit(app.exec())
-endsnippet
-
-
-snippet QWidget "QWidget" b
-from PySide6.QtWidgets import QWidget
-
-class ${1:MyWidget}(QWidget):
-	def __init__(self):
-		super().__init__()
-
-		self.hello = ['uno', 'dos', 'tres']
-		self.button = QPushButton('Click me!')
-		self.text = QLabel("Hello World")
-
-		self.layout = QVBoxLayout()
-		self.layout.addWidget(self.text)
-		self.layout.addWidget(self.button)
-
-		self.setLayout(self.layout)
-
-		self.button.clicked.connect(self.magic)
-
-	def magic(self):
-		self.text.setText(random.choice(self.hello))
-endsnippet
-
-
-snippet QUILoader "QUILoader" b
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtCore import QFile
-
-ui_file = QFile(${1:"mainwindow.ui"})
-ui_file.open(QFile.ReadOnly)
-
-loader = QUiLoader()
-window = loader.load(ui_file)
-ui_file.close()
-window.show()
-endsnippet
-
-
 snippet ET "xml.etree.ElementTree" b
 tree = ET.parse(${1:path})
 ${2:root} = tree.getroot()
 endsnippet
 
 
-snippet win32clipboard "win32clipboard" b
-win32clipboard.OpenClipboard()
-clipboard = win32clipboard.GetClipboardData()
-win32clipboard.CloseClipboard()
-endsnippet
-
 snippet printf "print(f'{value=}')" b
 print(f"{${1:value}=}")
+endsnippet
+
+
+snippet importlib "import file" b
+spec = importlib.util.spec_from_file_location(${1:module_name}, ${2:file_path})
+${3:module} = importlib.util.module_from_spec(spec)
+spec.loader.exec_module($3)
+$0
+endsnippet
+
+
+snippet argparse "argparse" b
+parser = argparse.ArgumentParser()
+parser.add_argument(${1:"arg1"})
+args = parser.parse_args()
 endsnippet

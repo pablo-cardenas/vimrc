@@ -1,0 +1,29 @@
+snippet torch "import torch" b
+import torch
+import torch.nn as nn
+import torch.optim as optim
+import torch.nn.functional as F
+$0
+endsnippet
+
+
+snippet device "device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')" b
+device = torch.device("cuda" if not torch.cuda.is_available() else "cpu")
+endsnippet
+
+
+snippet no_grad "with torch.no_grad()" b
+with torch.no_grad():
+	${0:${VISUAL:pass}}
+endsnippet
+
+
+snippet loss "zero_grad, backward, step" b
+loss = criterion(${3:input}, ${4:target})
+optimizer.zero_grad()
+loss.backward()
+# nn.utils.clip_grad_norm_(${1:model}.parameters(), max_norm=${2:1})
+# nn.utils.clip_grad_value_($1.parameters(), clip_value=$2)
+optimizer.step()
+$0
+endsnippet

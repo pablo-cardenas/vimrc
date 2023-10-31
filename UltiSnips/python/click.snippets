@@ -1,0 +1,7 @@
+snippet clickio "Click command for input/output" b
+@click.command()
+@click.argument("input", type=click.File("r"), default="-")
+@click.argument("output", type=click.File("w"), default="-")
+def main(input, output):
+	${0:${VISUAL:pass}}
+endsnippet

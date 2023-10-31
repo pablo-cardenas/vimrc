@@ -1,0 +1,16 @@
+snippet scene "Manim scene" b
+class ${1:DefaultScene}(Scene):
+	def construct(self):
+		${0:${VISUAL:pass}}
+endsnippet
+
+snippet tempconfig "Manim tempconfig" b
+with tempconfig(
+    {
+        "quality": "low_quality",
+        "preview": True,
+    }
+):
+	scene = ${1:DefaultScene}()
+	scene.render()
+endsnippet

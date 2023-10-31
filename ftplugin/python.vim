@@ -1,7 +1,8 @@
 setlocal formatprg=black\ -ql79\ -\ \|\ reorder-python-imports\ -
 setlocal makeprg=flake8\ %
 
-map <Leader>vr :call VimuxRunCommand("clear; source venv/bin/activate; python " . bufname("%"))<CR>
-map <Leader>vo :call VimuxRunCommand("clear; source venv/bin/activate; python")<CR>
-
 setlocal foldmethod=indent
+setlocal nofoldenable
+
+nnoremap <silent> <LocalLeader>vs :set opfunc=TmuxSendNormal<cr>g@
+vnoremap <silent> <LocalLeader>vs :call TmuxSendVisual(visualmode())<cr>
