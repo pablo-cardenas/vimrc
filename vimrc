@@ -4,9 +4,17 @@ set noshowmode
 set backspace=start,eol
 set incsearch
 
-set directory=~/.cache/vim/swap/
-set undofile
-set undodir=~/.cache/vim/undo/
+if has('win32')
+    set pythonthreedll=$LOCALAPPDATA\Programs\Python\Python312\python312.dll
+    set directory=$TEMP\vim\swap\
+    set undofile
+    set undodir=$TEMP\vim\undo\
+else
+    set directory=$XDG_CACHE_DIR/vim/swap/
+    set undofile
+    set undodir=$XDG_CACHE_DIR/vim/undo/
+endif
+
 
 filetype plugin indent on
 
