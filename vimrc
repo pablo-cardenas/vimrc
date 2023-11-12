@@ -10,9 +10,9 @@ if has('win32')
     set undofile
     set undodir=$TEMP\vim\undo\
 else
-    set directory=$XDG_CACHE_DIR/vim/swap/
+    set directory=$XDG_CACHE_HOME/vim/swap/
     set undofile
-    set undodir=$XDG_CACHE_DIR/vim/undo/
+    set undodir=$XDG_CACHE_HOME/vim/undo/
 endif
 
 
