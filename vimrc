@@ -24,9 +24,6 @@ set wildignore+=*/venv/*,*/*.egg-info/*,*.pyc,*/__pycache__/
 
 autocmd BufWinLeave *.* mkview
 
-" Annoying when accidentally press Ctrl-Space
-inoremap <C-@>   <NOP>
-
 " Arrows
 nnoremap h       $
 nnoremap l       0
