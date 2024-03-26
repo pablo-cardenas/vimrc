@@ -59,15 +59,15 @@ cabbrev q echo 'Use ZQ'
 cabbrev w echo 'Use up'
 
 " Registers
-for s:i in ['_','"','*','+','-','.',':','%','/','=','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+for s:i in ['_','"','*','+','~','-','.',':','%','#','/','=','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
     for s:j in ["p","P","y","Y","c","C","d","D"]
-        execute 'nnoremap ' . s:j . ' :<C-U>echo "Use registers instead of ' . s:j . '"<CR>'
+        execute 'nnoremap ' . s:j . ' :echo "Use registers instead of ' . s:j . '"<CR>'
         execute 'nnoremap "' . s:i . s:j . ' "' . s:i . s:j
         execute 'vnoremap ' . s:j . ' :<C-U>echo "Use registers instead of ' . s:j . '"<CR>'
         execute 'vnoremap "' . s:i . s:j . ' "' . s:i . s:j
     endfor
     for s:j in ["yy","cc","dd"]
-        execute 'nnoremap ' . s:j . ' :<C-U>echo "Use registers instead of ' . s:j . '"<CR>'
+        execute 'nnoremap ' . s:j . ' :echo "Use registers instead of ' . s:j . '"<CR>'
         execute 'nnoremap "' . s:i . s:j . ' "' . s:i . s:j
     endfor
 endfor
