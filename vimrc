@@ -49,6 +49,10 @@ cnoremap <BS>    <NOP>
 " Windows
 nnoremap <C-W><C-W> <NOP>
 
+" Jumps
+nnoremap <C-O> <NOP>
+nnoremap <C-I> <NOP>
+
 " Commands
 cabbrev wq echo 'Use ZZ'
 cabbrev q! echo 'Use ZQ'
