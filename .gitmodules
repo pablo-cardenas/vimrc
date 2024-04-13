@@ -22,12 +22,6 @@
 [submodule "pack/pablo/start/vim-snippets"]
 	path = pack/pablo/start/vim-snippets
 	url = https://github.com/honza/vim-snippets
-[submodule "pack/pablo/start/vimwiki"]
-	path = pack/pablo/start/vimwiki
-	url = https://github.com/vimwiki/vimwiki.git
-[submodule "pack/pablo/start/calendar-vim"]
-	path = pack/pablo/start/calendar-vim
-	url = https://github.com/mattn/calendar-vim.git
 [submodule "pack/pablo/start/vim-commentary"]
 	path = pack/pablo/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
