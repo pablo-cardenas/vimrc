@@ -28,3 +28,6 @@
 [submodule "pack/pablo/start/vim-indent-object"]
 	path = pack/pablo/start/vim-indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object.git
+[submodule "pack/pablo/start/vim-showmarks"]
+	path = pack/pablo/start/vim-showmarks
+	url = https://github.com/jacquesbh/vim-showmarks
