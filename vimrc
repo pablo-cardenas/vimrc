@@ -5,15 +5,18 @@ set backspace=start,eol
 set incsearch
 set t_Co=16
 
+set swapfile
+set undofile
+set backup
 if has('win32')
     set pythonthreedll=$LOCALAPPDATA\Programs\Python\Python312\python312.dll
     set directory=$TEMP\vim\swap\
-    set undofile
     set undodir=$TEMP\vim\undo\
+    set backupdir=$TEMP\vim\backup\
 else
     set directory=$XDG_CACHE_HOME/vim/swap/
-    set undofile
     set undodir=$XDG_CACHE_HOME/vim/undo/
+    set backupdir=$XDG_CACHE_HOME/vim/backup/
 endif
 
 
