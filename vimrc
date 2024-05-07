@@ -3,6 +3,7 @@ set history=10000
 set noshowmode
 set backspace=start,eol
 set incsearch
+set t_Co=16
 
 if has('win32')
     set pythonthreedll=$LOCALAPPDATA\Programs\Python\Python312\python312.dll
