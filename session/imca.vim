@@ -1,4 +1,4 @@
-cd ~/Documents/Development/imca
+cd ~/dox/dev/imca
 Explore .
 
 $tabnew
