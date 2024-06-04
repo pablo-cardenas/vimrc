@@ -31,16 +31,6 @@ snippet amsthm "amsthm" b
 
 endsnippet
 
-context "not math()"
-snippet newthm "\newtheorem" b
-\newtheorem{${1:theorem}}{${2:`!p snip.rv = t[1].title()`}}
-endsnippet
-
-context "not math()"
-snippet thmsty "\theoremstyle" b
-\theoremstyle{$1`!p snip.rv = complete(t[1], ['plain', 'definition', 'remark'])`}$0
-endsnippet
-
 # --------------------------------------------- #
 
 context "not math()"
