@@ -1,2 +1,2 @@
 setlocal formatprg=shfmt
-compiler shellcheck
+setlocal makeprg=shellcheck\ -x\ --format=gcc\ -o\ all\ %
