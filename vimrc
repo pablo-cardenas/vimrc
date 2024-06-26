@@ -33,6 +33,17 @@ nnoremap h       $
 nnoremap l       0
 nnoremap j       gg
 nnoremap k       G
+nnoremap e       :echo "Use ge"<CR>
+nnoremap b       :echo "Use ge"<CR>
+nnoremap $       :echo "Use g$ or g_"<CR>
+nnoremap ^       :echo "Use g^ or g0"<CR>
+nnoremap 0       :echo "Use g0 or g^"<CR>
+nnoremap _       :echo "Use g0"<CR>
+nnoremap r       :echo "Use gr"<CR>
+nnoremap R       :echo "Use gR"<CR>
+nnoremap ~       :echo "Use g~"<CR>
+nnoremap *       :echo "Use g*"<CR>
+nnoremap #       :echo "Use g#"<CR>
 nnoremap <Left>  $
 nnoremap <Right> 0
 nnoremap <Up>    G
