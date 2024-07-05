@@ -13,5 +13,5 @@ tabrewind
 
 $tabnew
 edit ~/.local/bin/leticia
-split ~/.vim/session/leticia.vim
+split ${XDG_CONFIG_HOME}/vim/session/leticia.vim
 tabrewind
