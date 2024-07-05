@@ -1,36 +1,15 @@
-[submodule "pack/pablo/start/editorconfig-vim"]
-	path = pack/pablo/start/editorconfig-vim
-	url = https://github.com/editorconfig/editorconfig-vim
-[submodule "pack/pablo/start/vim-gitgutter"]
-	path = pack/pablo/start/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
-[submodule "pack/pablo/start/vimux"]
-	path = pack/pablo/start/vimux
-	url = https://github.com/benmills/vimux
-[submodule "pack/pablo/start/emmet-vim"]
-	path = pack/pablo/start/emmet-vim
-	url = https://github.com/mattn/emmet-vim
-[submodule "pack/pablo/start/vim-surround"]
-	path = pack/pablo/start/vim-surround
+[submodule "pack/thirdparty/opt/emmet-vim"]
+	path = pack/thirdparty/opt/emmet-vim
+	url = https://github.com/mattn/emmet-vim.git
+[submodule "pack/thirdparty/opt/vim-surround"]
+	path = pack/thirdparty/opt/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "pack/pablo/start/ultisnips"]
-	path = pack/pablo/start/ultisnips
-	url = https://github.com/SirVer/ultisnips
-[submodule "pack/pablo/start/vimtex"]
-	path = pack/pablo/start/vimtex
-	url = https://github.com/lervag/vimtex.git
-[submodule "pack/pablo/start/vim-snippets"]
-	path = pack/pablo/start/vim-snippets
-	url = https://github.com/honza/vim-snippets
-[submodule "pack/pablo/start/vim-commentary"]
-	path = pack/pablo/start/vim-commentary
-	url = https://github.com/tpope/vim-commentary.git
-[submodule "pack/pablo/start/vim-indent-object"]
-	path = pack/pablo/start/vim-indent-object
+[submodule "pack/thirdparty/opt/ultisnips"]
+	path = pack/thirdparty/opt/ultisnips
+	url = https://github.com/SirVer/ultisnips.git
+[submodule "pack/thirdparty/opt/vim-indent-object"]
+	path = pack/thirdparty/opt/vim-indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object.git
-[submodule "pack/pablo/start/vim-showmarks"]
-	path = pack/pablo/start/vim-showmarks
-	url = https://github.com/jacquesbh/vim-showmarks
-[submodule "pack/pablo/start/vim-ledger"]
-	path = pack/pablo/start/vim-ledger
-	url = https://github.com/ledger/vim-ledger
+[submodule "pack/thirdparty/opt/vim-ledger"]
+	path = pack/thirdparty/opt/vim-ledger
+	url = https://github.com/ledger/vim-ledger.git
