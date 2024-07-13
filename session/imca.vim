@@ -1,3 +1,6 @@
+runtime! plugin/netrwPlugin.vim
+filetype plugin indent on
+
 cd ~/dox/dev/imca
 Explore .
 
