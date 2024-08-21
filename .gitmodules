@@ -13,3 +13,6 @@
 [submodule "pack/thirdparty/opt/vim-ledger"]
 	path = pack/thirdparty/opt/vim-ledger
 	url = https://github.com/ledger/vim-ledger.git
+[submodule "pack/thirdparty/opt/vimtex"]
+	path = pack/thirdparty/opt/vimtex
+	url = https://github.com/lervag/vimtex.git
