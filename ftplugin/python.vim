@@ -1,3 +1,5 @@
+setlocal complete-=i
+
 setlocal formatprg=black\ -ql79\ -\ \|\ reorder-python-imports\ -
 setlocal makeprg=flake8\ %
 
