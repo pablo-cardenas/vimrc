@@ -40,6 +40,10 @@ inoremap <Right> <C-o>:echo "Use \<Space\>"<CR>
 inoremap <Up>    <C-R>=pumvisible() ? "\<lt>Up>" : "\<lt>C-o>:echo \"Use -\"\<lt>CR>"<CR>
 inoremap <Down>  <C-R>=pumvisible() ? "\<lt>Down>" : "\<lt>C-o>:echo \"Use +\"\<lt>CR>"<CR>
 inoremap <BS>    <C-o>:echo "Use \<C-h\>"<CR>
+inoremap <CR>    <C-o>:echo "Use \<C-g\>u\<CR\>"<CR>
+inoremap <C-g>u<CR> <C-g>u<CR>
+inoremap <C-u>    <C-o>:echo "Use \<C-g\>u\<C-u\>"<CR>
+inoremap <C-g>u<C-u> <C-g>u<C-u>
 cnoremap <BS>    <NOP>
 cnoremap <C-p>   <C-U>:echo "Use \<C-f\>"<CR>
 cnoremap <C-n>   <C-U>:echo "Use \<C-f\>"<CR>
