@@ -37,9 +37,9 @@ if ! isdirectory(expand(&g:viewdir))
 endif
 
 
-set path=
-set wildignore+=*/node_modules/*
-set wildignore+=*/venv/*,*/*.egg-info/*,*.pyc,*/__pycache__/
+set path=,
+" set wildignore+=*/node_modules/*
+" set wildignore+=*/venv/*,*/*.egg-info/*,*.pyc,*/__pycache__/
 
 set noloadplugins
 
