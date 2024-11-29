@@ -1,8 +1,8 @@
 map <Leader>vr :call VimuxRunCommand("clear; Rscript " . bufname("%"))<CR>
 map <Leader>vo :call VimuxRunCommand("clear; R")<CR>
-set softtabstop=2
-set shiftwidth=2
-set expandtab
+setlocal softtabstop=2
+setlocal shiftwidth=2
+setlocal expandtab
 let rmd_dynamic_comments = 0
 
 function! rmd#Format()
@@ -14,4 +14,4 @@ else
   endif
 endfunction
 
-set formatexpr=rmd#Format()
+setlocal formatexpr=rmd#Format()
