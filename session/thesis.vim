@@ -1,5 +1,5 @@
 edit document.tex
-syntax on 
+syntax on
 set nolist
 autocmd TextChanged *.tex :write
 norm Gzb{{+
@@ -10,15 +10,17 @@ function! Synctex()
 endfunction
 
 function! ViewRef()
-	let match_list = matchlist(getline('.'), "^% \\(\\a\\+\\d\\+\\) \\(\\d\\+\\)")
+	let match_list = matchlist(getline('.'), "^%% \\(\\a\\+\\d\\+\\) \\(\\d\\+\\)+\\(\\d\\+\\) \\(.*\\)$")
 	let ref = $BIB_DATA . "/" . match_list[1] . ".pdf"
-	let page = match_list[2]
-	execute "silent !zathura " . ref . " -P " . page . " >/dev/null 2>&1 &"
+	let page = match_list[2] + match_list[3]
+	let search = match_list[4]
+	execute "silent !zathura " . ref . " -P " . page . " -f '" . search . "' >/dev/null 2>/dev/null&"
+
 	redraw!
 endfunction
 
 function! Action()
-	if match(getline('.'), "^\s*%") == -1
+	if match(getline('.'), "^\s*%%") == -1
 		call Synctex()
 	else
 		call ViewRef()
