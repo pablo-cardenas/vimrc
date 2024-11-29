@@ -16,3 +16,6 @@
 [submodule "pack/thirdparty/opt/vimtex"]
 	path = pack/thirdparty/opt/vimtex
 	url = https://github.com/lervag/vimtex.git
+[submodule "pack/thirdparty/opt/copilot.vim"]
+	path = pack/thirdparty/opt/copilot.vim
+	url = https://github.com/github/copilot.vim
