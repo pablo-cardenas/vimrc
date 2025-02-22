@@ -65,6 +65,7 @@ runtime! plugin/redact_pass.vim
 " packadd! editorconfig
 " packadd! matchit
 
+" packadd copilot.vim
 " packadd emmet-vim
 " packadd ultisnips
 " packadd vim-gitgutter
@@ -78,5 +79,6 @@ runtime! plugin/redact_pass.vim
 packadd hardmode
 packadd tmux
 packadd lsp
+packadd multiplayer
 
 "filetype plugin indent on
