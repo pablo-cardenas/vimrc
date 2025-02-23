@@ -11,37 +11,18 @@ def env(name):
 endglobal
 
 
-snippet template "Basic template" b
+snippet latex "Basic template" b
 \documentclass[a4paper]{article}
 
-\usepackage[T1]{fontenc}
-\usepackage{mathtools,amssymb}
+\usepackage{amsmath,amssymb}
 
-$1
+${1:\input macros}
+
 \begin{document}
+
 $0
+
 \end{document}
-endsnippet
-
-snippet savetrees "Save Trees!" b
-
-\usepackage[paperwidth=7.5cm, paperheight=19.8cm, margin=2.5mm]{geometry}
-\usepackage[extreme]{savetrees}
-\AtBeginDocument{
-	\setlength{\jot}{0pt}
-	\setlength{\abovedisplayskip}{0pt}
-	\setlength{\belowdisplayskip}{0pt}
-	\setlength{\abovedisplayshortskip}{0pt}
-	\setlength{\belowdisplayshortskip}{0pt}
-	\scriptsize
-}
-
-%\usepackage{multicol}
-%\setlength{\columnseprule}{0.4pt}
-%\setlength{\columnsep}{6pt}
-%\geometry{a4paper, landscape, margin=6mm}
-%\AtBeginDocument{\begin{multicols}{4}}\AtEndDocument{\end{multicols}}
-
 endsnippet
 
 snippet beg "begin{} / end{}" bA
