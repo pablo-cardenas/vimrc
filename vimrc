@@ -10,12 +10,14 @@ set undofile
 set backup
 autocmd BufWinLeave *.* mkview
 
+
 if has('win32')
   set pythonthreedll=$LOCALAPPDATA\Programs\Python\Python312\python312.dll
   set directory=$TEMP\vim\swap\
   set undodir=$TEMP\vim\undo\
   set backupdir=$TEMP\vim\backup\
   set viewdir=$TEMP\vim\view\
+  set shell=powershell
 else
   set directory=$XDG_CACHE_HOME/vim/swap/
   set undodir=$XDG_CACHE_HOME/vim/undo/
@@ -76,9 +78,9 @@ runtime! plugin/redact_pass.vim
 " packadd vim-surround
 " packadd vimtex
 
-packadd hardmode
-packadd tmux
-packadd lsp
-packadd multiplayer
+" packadd hardmode
+" packadd tmux
+" packadd lsp
+" packadd multiplayer
 
 "filetype plugin indent on
