@@ -1,0 +1,47 @@
+" Plugin {{{
+set noloadplugins
+" runtime! plugin/getscriptPlugin.vim
+" runtime! plugin/gzip.vim
+" runtime! plugin/logiPat.vim
+" runtime! plugin/manpager.vim
+" runtime! plugin/matchparen.vim
+" runtime! plugin/netrwPlugin.vim
+" runtime! plugin/rrhelper.vim
+" runtime! plugin/spellfile.vim
+" runtime! plugin/tarPlugin.vim
+" runtime! plugin/tohtml.vim
+" runtime! plugin/vimballPlugin.vim
+" runtime! plugin/zipPlugin.vim
+" runtime! plugin/fzf.vim
+runtime! plugin/redact_pass.vim
+" }}}
+
+" Packages {{{
+
+"" builtin
+" packadd comment
+" packadd cfilter
+" packadd termdebug
+" packadd editorconfig
+" packadd matchit
+
+"" thirdparty
+" packadd emmet-vim
+" packadd vim-ledger
+" packadd vim-surround
+" packadd vimtex
+
+"" pablo 
+" packadd hardmode
+" packadd tmux
+" packadd lsp
+" packadd multiplayer
+" packadd snippets
+" }}}
+
+" set wildignore+=*/node_modules/*
+" set wildignore+=*/venv/*,*/*.egg-info/*,*.pyc,*/__pycache__/
+" filetype plugin indent on
+" syntax enable
+
+" vim: ft=vim fen fdm=marker

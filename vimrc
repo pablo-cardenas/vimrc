@@ -9,6 +9,7 @@ set swapfile
 set undofile
 set backup
 autocmd BufWinLeave *.* mkview
+au BufWritePre * let &backupext = '-' .. strftime("%Y%b%d%X") .. '~'
 
 
 if has('win32')
@@ -21,66 +22,17 @@ if has('win32')
 else
   set directory=$XDG_CACHE_HOME/vim/swap/
   set undodir=$XDG_CACHE_HOME/vim/undo/
-  set backupdir=$XDG_CACHE_HOME/vim/backup/
+  set backupdir=$XDG_CACHE_HOME/vim/backup//
   set viewdir=$XDG_CACHE_HOME/vim/view/
+  set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
 endif
 
-if ! isdirectory(expand(&g:directory))
-  silent! call mkdir(expand(&g:directory), 'p', 0700)
-endif
-if ! isdirectory(expand(&g:backupdir))
-  silent! call mkdir(expand(&g:backupdir), 'p', 0700)
-endif
-if ! isdirectory(expand(&g:undodir))
-  silent! call mkdir(expand(&g:undodir), 'p', 0700)
-endif
-if ! isdirectory(expand(&g:viewdir))
-  silent! call mkdir(expand(&g:viewdir), 'p', 0700)
-endif
-
+for folder in [&g:directory, &g:backupdir, &g:undodir, &viewdir]
+  if ! isdirectory(expand(folder))
+    silent! call mkdir(expand(folder), 'p', 0700)
+  endif
+endfor
 
 set path=,
-" set wildignore+=*/node_modules/*
-" set wildignore+=*/venv/*,*/*.egg-info/*,*.pyc,*/__pycache__/
 
-set noloadplugins
-
-" runtime! plugin/getscriptPlugin.vim
-" runtime! plugin/gzip.vim
-" runtime! plugin/logiPat.vim
-" runtime! plugin/manpager.vim
-" runtime! plugin/matchparen.vim
-" runtime! plugin/netrwPlugin.vim
-" runtime! plugin/rrhelper.vim
-" runtime! plugin/spellfile.vim
-" runtime! plugin/tarPlugin.vim
-" runtime! plugin/tohtml.vim
-" runtime! plugin/vimballPlugin.vim
-" runtime! plugin/zipPlugin.vim
-
-" runtime! plugin/fzf.vim
-runtime! plugin/redact_pass.vim
-
-" packadd comment
-" "packadd termdebug
-" packadd! cfilter
-" packadd! editorconfig
-" packadd! matchit
-
-" packadd copilot.vim
-" packadd emmet-vim
-" packadd ultisnips
-" packadd vim-gitgutter
-" packadd vim-indent-object
-" packadd vim-ledger
-" packadd vim-showmarks
-" packadd vim-snippets
-" packadd vim-surround
-" packadd vimtex
-
-" packadd hardmode
-" packadd tmux
-" packadd lsp
-" packadd multiplayer
-
-"filetype plugin indent on
+source config.vim

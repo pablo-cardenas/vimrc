@@ -3,6 +3,7 @@ setlocal tabstop=2
 setlocal shiftwidth=2
 setlocal conceallevel=2
 highlight! link Conceal texCmd
+let g:tex_conceal='abdmg'
 
 highlight ExtraWhitespace ctermbg=1
 match ExtraWhitespace /\(\(\\(\)\@<=\s\+\|\s\+\(\\)\)\@=\|\(\S.*\)\@<=\s\s\+\([^ &\\]\)\@=\)/
