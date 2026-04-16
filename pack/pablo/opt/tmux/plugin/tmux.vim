@@ -1,37 +1,51 @@
-function TmuxSendText(text) abort
-	call TmuxSendKeys(shellescape(substitute(a:text, '\n$', ' ', '')))
-endfunction
+vim9script
 
-function TmuxSendKeys(keys) abort
-	call system('tmux send-keys -t {marked} '.a:keys)
-endfunction
+def g:TmuxSendKeysToMarkedVisual()
+    var a_save = @a
+    try
+        silent execute 'normal! "ay'
+        call system('tmux send-keys -t {marked} -- ' .. "\e[200~" .. shellescape(@a) .. "\e[201~" )
+        call system('tmux send-keys -t {marked} -- ' .. "Enter" )
+    finally
+        @a = a_save
+    endtry
+enddef
 
-function TmuxSendNormal(type)
-	try
-		let a_save = @a
-		if a:type == 'line'
-			silent exe "normal! '[V']".'"ay'
-			call TmuxSendText(@a)
-			call TmuxSendKeys("Enter")
-		elseif a:type == "char"
-			silent exe "normal! `[v`]".'"ay'
-			call TmuxSendText(@a)
-		endif
-	finally
-		let @a = a_save
-		set operatorfunc=
-	endtry
-endfunction
+def g:TmuxSendKeysToMarkedNormal(type: string)
+    var a_save = @a
+    try
+        if type == 'line'
+            silent execute "normal! '[V']\"ay"
+        elseif type == "char"
+            silent execute "normal! `[v`]\"ay"
+        elseif type == "block"
+            silent execute "normal! `[\<C-v>`]\"ay"
+        endif
+        call system('tmux send-keys -t {marked} -- ' .. "\e[200~" .. shellescape(@a) .. "\e[201~" )
+        call system('tmux send-keys -t {marked} -- ' .. "Enter" )
+    finally
+        @a = a_save
+        set operatorfunc=
+    endtry
+enddef
 
-function TmuxSendVisual(visualmode)
-	try
-		let a_save = @a
-		silent exe "normal! `<".a:visualmode."`>".'"ay'
-		call TmuxSendText(@a)
-		if a:visualmode =~ '^V$'
-			call TmuxSendKeys("Enter")
-		endif
-	finally
-		let @a = a_save
-	endtry
-endfunction
+def g:TmuxSetBuffer()
+    var a_save = @a
+    try
+        silent execute 'normal! "ay'
+        call system('tmux set-buffer ' .. shellescape(@a))
+    finally
+        @a = a_save
+    endtry
+enddef
+
+vmap <silent> <localleader>tb <CMD>call TmuxSetBuffer()<CR>
+vmap <silent> <localleader>ts <CMD>call TmuxSendKeysToMarkedVisual()<CR>
+nmap <silent> <localleader>ts <CMD>set operatorfunc=TmuxSendKeysToMarkedNormal<CR>g@
+nmap <silent> <localleader>tss <CMD>set operatorfunc=TmuxSendKeysToMarkedNormal<CR>g@_
+nmap <silent> <localleader>te <CMD>call system('tmux send-keys -t {marked} Enter')<CR>
+nmap <silent> <localleader>tc <CMD>call system('tmux send-keys -t {marked} <C-c>')<CR>
+nmap <silent> <localleader>td <CMD>call system('tmux send-keys -t {marked} <C-d>')<CR>
+nmap <silent> <localleader>tp <CMD>call system('tmux send-keys -t {marked} python Enter')<CR>
+
+# vim: et sts=4 sw=4

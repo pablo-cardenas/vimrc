@@ -35,4 +35,4 @@ endfor
 
 set path=,
 
-source config.vim
+runtime! config.vim
