@@ -5,7 +5,6 @@ def g:TmuxSendKeysToMarkedVisual()
     try
         silent execute 'normal! "ay'
         call system('tmux send-keys -t {marked} -- ' .. "\e[200~" .. shellescape(@a) .. "\e[201~" )
-        call system('tmux send-keys -t {marked} -- ' .. "Enter" )
     finally
         @a = a_save
     endtry
@@ -22,7 +21,6 @@ def g:TmuxSendKeysToMarkedNormal(type: string)
             silent execute "normal! `[\<C-v>`]\"ay"
         endif
         call system('tmux send-keys -t {marked} -- ' .. "\e[200~" .. shellescape(@a) .. "\e[201~" )
-        call system('tmux send-keys -t {marked} -- ' .. "Enter" )
     finally
         @a = a_save
         set operatorfunc=

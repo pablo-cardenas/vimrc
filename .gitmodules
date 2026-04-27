@@ -10,3 +10,6 @@
 [submodule "pack/thirdparty/opt/vimtex"]
 	path = pack/thirdparty/opt/vimtex
 	url = https://github.com/lervag/vimtex.git
+[submodule "pack/thirdparty/opt/vim-indent-object"]
+	path = pack/thirdparty/opt/vim-indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object.git

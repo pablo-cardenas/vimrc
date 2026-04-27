@@ -43,7 +43,7 @@ def g:Snippet_InsertCharPre()
        var lnum = pos[1]
        var coln = pos[2]
        var line = getline('.')
-       if line[coln - 2] == 'm'
+       if line[ : coln - 2] =~# '\<m$'
            command = '\(...\)'
        endif
     elseif v:char == 'm' && !vimtex#syntax#in_mathzone()
@@ -51,7 +51,7 @@ def g:Snippet_InsertCharPre()
        var lnum = pos[1]
        var coln = pos[2]
        var line = getline('.')
-       if line[coln - 2] == 'd'
+       if line[ : coln - 2] =~# '^\s*d$'
            command = '\[...\]'
        endif
     elseif v:char == '=' && vimtex#syntax#in_mathzone()
@@ -61,6 +61,30 @@ def g:Snippet_InsertCharPre()
        var line = getline('.')
        if line[coln - 2] == '<'
            command = '<='
+       endif
+    elseif v:char == '=' && vimtex#syntax#in_mathzone()
+       var pos = getcharpos('.')
+       var lnum = pos[1]
+       var coln = pos[2]
+       var line = getline('.')
+       if line[coln - 2] == '>'
+           command = '>='
+       endif
+    elseif v:char == 'v' && vimtex#syntax#in_mathzone()
+       var pos = getcharpos('.')
+       var lnum = pos[1]
+       var coln = pos[2]
+       var line = getline('.')
+       if line[coln - 2] == 'v'
+           command = 'vv'
+       endif
+    elseif v:char == 'V' && vimtex#syntax#in_mathzone()
+       var pos = getcharpos('.')
+       var lnum = pos[1]
+       var coln = pos[2]
+       var line = getline('.')
+       if line[coln - 2] == 'V'
+           command = 'VV'
        endif
     endif
 
@@ -108,6 +132,14 @@ def g:Snippet_TextChangedI()
                 line[coln - 1 : ]
             )
             setcharpos('.', [0, lnum, coln + 3 - 2, 0])
+        elseif command == '>='
+            setline(
+                ".",
+                strcharpart(line, 0, coln - 3) ..
+                '\ge' ..
+                line[coln - 1 : ]
+            )
+            setcharpos('.', [0, lnum, coln + 3 - 2, 0])
         elseif command == '\(...\)'
             setline(
                 ".",
@@ -132,15 +164,37 @@ def g:Snippet_TextChangedI()
                 line[coln - 1 : ]
             )
             setcharpos('.', [0, lnum, coln + 6 - 2, 0])
+        elseif command == 'vv'
+            setline(
+                ".",
+                strcharpart(line, 0, coln - 3) ..
+                '\lvert  \rvert<++>' ..
+                line[coln - 1 : ]
+            )
+            setcharpos('.', [0, lnum, coln + 7 - 2, 0])
+        elseif command == 'VV'
+            setline(
+                ".",
+                strcharpart(line, 0, coln - 3) ..
+                '\lVert  \rVert<++>' ..
+                line[coln - 1 : ]
+            )
+            setcharpos('.', [0, lnum, coln + 7 - 2, 0])
         endif
 
         command = ''
     endif
 enddef
 
+def g:JumpPlaceholder()
+    if  search('<++>') > 0
+        feedkeys("\<Esc> \"_ca>")
+    endif
+enddef
+
 g:surround_insert_tail = "<++>"
 
-inoremap <silent> <C-J> <Esc>:call search('<++>')<CR>"_c4l
-noremap <silent> <C-J> :call search('<++>')<CR>"_c4l
+inoremap <silent> <C-J> <Cmd>:call JumpPlaceholder()<CR>
+nnoremap <silent> <C-J> <Cmd>:call JumpPlaceholder()<CR>
 
 # vim: et sts=4 sw=4
