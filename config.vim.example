@@ -33,10 +33,11 @@ runtime! plugin/redact_pass.vim
 
 "" pablo 
 " packadd hardmode
-" packadd tmux
 " packadd lsp
+" packadd marks
 " packadd multiplayer
 " packadd snippets
+" packadd tmux
 " }}}
 
 " set wildignore+=*/node_modules/*
