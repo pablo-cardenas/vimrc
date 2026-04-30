@@ -197,4 +197,7 @@ g:surround_insert_tail = "<++>"
 inoremap <silent> <C-J> <Cmd>:call JumpPlaceholder()<CR>
 nnoremap <silent> <C-J> <Cmd>:call JumpPlaceholder()<CR>
 
+const dir_template = expand('<sfile>:p:h:h') .. '/templates'
+autocmd BufNewFile document.tex execute ':0read ' .. dir_template .. '/document.tex'
+
 # vim: et sts=4 sw=4

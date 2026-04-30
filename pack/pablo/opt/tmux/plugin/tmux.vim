@@ -40,7 +40,6 @@ enddef
 vmap <silent> <localleader>tb <CMD>call TmuxSetBuffer()<CR>
 vmap <silent> <localleader>ts <CMD>call TmuxSendKeysToMarkedVisual()<CR>
 nmap <silent> <localleader>ts <CMD>set operatorfunc=TmuxSendKeysToMarkedNormal<CR>g@
-nmap <silent> <localleader>tss <CMD>set operatorfunc=TmuxSendKeysToMarkedNormal<CR>g@_
 nmap <silent> <localleader>te <CMD>call system('tmux send-keys -t {marked} Enter')<CR>
 nmap <silent> <localleader>tc <CMD>call system('tmux send-keys -t {marked} <C-c>')<CR>
 nmap <silent> <localleader>td <CMD>call system('tmux send-keys -t {marked} <C-d>')<CR>
