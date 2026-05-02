@@ -29,9 +29,11 @@ runtime! plugin/redact_pass.vim
 " packadd emmet-vim
 " packadd vim-ledger
 " packadd vim-surround
+" packadd vim-indent-object
 " packadd vimtex
 
 "" pablo 
+" packadd folds
 " packadd hardmode
 " packadd lsp
 " packadd marks
