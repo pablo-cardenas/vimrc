@@ -1,1 +1,1 @@
-setlocal formatprg=bibclean
+setlocal formatprg=bibclean\ -max-width\ 0
