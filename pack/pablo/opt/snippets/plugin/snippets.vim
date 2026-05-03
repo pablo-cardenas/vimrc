@@ -5,7 +5,7 @@ autocmd TextChangedI *.tex call Snippet_TextChangedI()
 
 var command: string = ''
 
-def g:Snippet_InsertCharPre()
+def Snippet_InsertCharPre()
     if v:char == '_' && vimtex#syntax#in_mathzone()
        var pos = getcharpos('.')
        var lnum = pos[1]
@@ -93,7 +93,7 @@ def g:Snippet_InsertCharPre()
     endif
 enddef
 
-def g:Snippet_TextChangedI()
+def Snippet_TextChangedI()
     if command != ''
         var pos = getcharpos('.')
         var lnum = pos[1]
@@ -186,7 +186,7 @@ def g:Snippet_TextChangedI()
     endif
 enddef
 
-def g:JumpPlaceholder()
+def JumpPlaceholder()
     if  search('<++>') > 0
         feedkeys("\<Esc> \"_ca>")
     endif
@@ -194,8 +194,8 @@ enddef
 
 g:surround_insert_tail = "<++>"
 
-inoremap <silent> <C-J> <Cmd>:call JumpPlaceholder()<CR>
-nnoremap <silent> <C-J> <Cmd>:call JumpPlaceholder()<CR>
+inoremap <silent> <C-J> <ScriptCmd>JumpPlaceholder()<CR>
+nnoremap <silent> <C-J> <ScriptCmd>JumpPlaceholder()<CR>
 
 const dir_template = expand('<sfile>:p:h:h') .. '/templates'
 autocmd BufNewFile document.tex execute ':0read ' .. dir_template .. '/document.tex'

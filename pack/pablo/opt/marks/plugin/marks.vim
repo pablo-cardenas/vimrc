@@ -42,7 +42,7 @@ def HighlightMarks()
 enddef
 
 
-nnoremap <localleader>` <Cmd>call <SID>ToggleHighlightMarks()<CR>
+nnoremap <localleader>` <ScriptCmd>ToggleHighlightMarks()<CR>
 autocmd CursorMoved,CursorMovedI * HighlightMarks()
 
 # vim: et sts=4 sw=4
