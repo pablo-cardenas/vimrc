@@ -1,7 +1,12 @@
 setlocal complete-=i
 
-setlocal formatprg=black\ -ql79\ -\ \|\ reorder-python-imports\ -
-setlocal makeprg=flake8\ %
+if executable('black') && executable('reorder-python-imports')
+	setlocal formatprg=black\ -ql79\ -\ \|\ reorder-python-imports\ -
+endif
+
+if executable('flake8')
+	setlocal makeprg=flake8\ %
+endif
 
 setlocal path+=src
 if !empty($VIRTUAL_ENV)

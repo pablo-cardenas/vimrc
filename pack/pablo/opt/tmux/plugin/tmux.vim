@@ -1,6 +1,6 @@
 vim9script
 
-def g:TmuxSendKeysToMarkedVisual()
+def TmuxSendKeysToMarkedVisual()
     var a_save = @a
     try
         silent execute 'normal! "ay'
@@ -39,7 +39,7 @@ enddef
 
 vmap <silent> <localleader>tb <ScriptCmd>TmuxSetBuffer()<CR>
 vmap <silent> <localleader>ts <ScriptCmd>TmuxSendKeysToMarkedVisual()<CR>
-nmap <silent> <localleader>ts <Cmd>set operatorfunc=TmuxSendKeysToMarkedNormal<CR>g@
+nmap <silent> <localleader>ts <Cmd>set operatorfunc=<SID>TmuxSendKeysToMarkedNormal<CR>g@
 nmap <silent> <localleader>te <ScriptCmd>system('tmux send-keys -t {marked} Enter')<CR>
 nmap <silent> <localleader>tc <ScriptCmd>system('tmux send-keys -t {marked} <C-c>')<CR>
 nmap <silent> <localleader>td <ScriptCmd>system('tmux send-keys -t {marked} <C-d>')<CR>
