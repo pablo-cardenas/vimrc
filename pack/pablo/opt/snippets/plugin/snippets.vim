@@ -186,18 +186,12 @@ def Snippet_TextChangedI()
     endif
 enddef
 
-def JumpPlaceholder()
-    if  search('<++>') > 0
-        feedkeys("\<Esc> \"_ca>")
-    endif
-enddef
-
 g:surround_insert_tail = "<++>"
 
-inoremap <silent> <C-J> <ScriptCmd>JumpPlaceholder()<CR>
-nnoremap <silent> <C-J> <ScriptCmd>JumpPlaceholder()<CR>
+inoremap <silent> <C-J> <Esc>:let @/='\V<++>'<CR>"_cgn
+nnoremap <silent> <C-J> <Cmd>let @/='\V<++>'<CR>"_cgn
 
 const dir_template = expand('<sfile>:p:h:h') .. '/templates'
-autocmd BufNewFile document.tex execute ':0read ' .. dir_template .. '/document.tex'
+autocmd BufNewFile document.tex execute ':silent :0read ' .. dir_template .. '/document.tex'
 
 # vim: et sts=4 sw=4
