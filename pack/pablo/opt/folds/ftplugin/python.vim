@@ -59,9 +59,13 @@ def CustomFoldText(): string
     return '+' .. v:folddashes .. printf('%3d lines: %s', nlines, line)
 enddef
 
-setlocal foldmethod=expr
-setlocal foldexpr=MyFoldFunc()
-setlocal foldtext=CustomFoldText()
-setlocal foldlevel=1
+def SetFolds()
+    setlocal foldmethod=expr
+    setlocal foldexpr=MyFoldFunc()
+    setlocal foldtext=CustomFoldText()
+    setlocal foldlevel=1
+enddef
+
+autocmd BufWinEnter * if &foldmethod == "manual" | call SetFolds() | endif
 
 # vim: et sts=4 sw=4
